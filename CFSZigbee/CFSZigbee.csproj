@@ -97,6 +97,7 @@
     <EmbeddedResource Include="RearNode.resx">
       <DependentUpon>RearNode.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Racecar.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

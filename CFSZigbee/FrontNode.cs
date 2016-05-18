@@ -22,26 +22,6 @@ namespace CFSZigbee
 			_xBee = sp;
 		}
 
-		private void GUIUpdate_Tick(object sender, EventArgs e)
-		{
-			lblTorqueImplaus.Text				= _car.Errors[Racecar.ErrorType.TorqueImplaus].ToString();
-			lblTorque1Fault.Text				= _car.Errors[Racecar.ErrorType.Throttle1Fault].ToString();
-			lblTorque2Fault.Text				= _car.Errors[Racecar.ErrorType.Throttle2Fault].ToString();
-			lblTroqueBrakeImplaus.Text	= _car.Errors[Racecar.ErrorType.ThrottleBrakeImplaus].ToString();
-			lblBrakeFault.Text					= _car.Errors[Racecar.ErrorType.BrakeFault].ToString();
-
-			var lblErrors = grpError.Controls.OfType<Label>();
-
-			foreach(var err in lblErrors)
-			{
-				if (err.Text.ToLower() == "true")
-					errorProvider.SetError(err, "Problemz!");
-				else
-					errorProvider.SetError(err, "");
-			}
-			lblRTD.Text									= _car.Rtd.ToString();
-		}
-
 
 		private void FrontNode_FormClosing(object sender, FormClosingEventArgs e)
 		{
