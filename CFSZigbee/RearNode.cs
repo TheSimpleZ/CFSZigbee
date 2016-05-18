@@ -41,7 +41,7 @@ namespace CFSZigbee
 		private void GUIUpdate_Tick(object sender, EventArgs e)
 		{
 			lblShutdownCurrent.Text = _car.ShutdownCurrent ? "ON" : "OFF";
-			lblTorqueReq.Text = ((double)_car.TorqueEncoderPosition/100) + " Nm";
+			lblTorqueReq.Text = ((double)_car.ThrottlePosition/100) + " Nm";
 		}
 	}
 }

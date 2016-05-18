@@ -72,18 +72,18 @@
 			this.label3.AutoSize = true;
 			this.label3.Location = new System.Drawing.Point(6, 45);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(105, 17);
+			this.label3.Size = new System.Drawing.Size(108, 17);
 			this.label3.TabIndex = 5;
-			this.label3.Text = "Torque 1 Fault:";
+			this.label3.Text = "Throttle 1 Fault:";
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Location = new System.Drawing.Point(6, 18);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(141, 17);
+			this.label1.Size = new System.Drawing.Size(144, 17);
 			this.label1.TabIndex = 0;
-			this.label1.Text = "Torque Implausibility:";
+			this.label1.Text = "Throttle Implausibility:";
 			// 
 			// lblBrakeFault
 			// 
@@ -99,18 +99,18 @@
 			this.label7.AutoSize = true;
 			this.label7.Location = new System.Drawing.Point(6, 102);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(183, 17);
+			this.label7.Size = new System.Drawing.Size(186, 17);
 			this.label7.TabIndex = 9;
-			this.label7.Text = "Torque-Brake Implausibility:";
+			this.label7.Text = "Throttle-Brake Implausibility:";
 			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
 			this.label4.Location = new System.Drawing.Point(6, 72);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(105, 17);
+			this.label4.Size = new System.Drawing.Size(108, 17);
 			this.label4.TabIndex = 7;
-			this.label4.Text = "Torque 2 Fault:";
+			this.label4.Text = "Throttle 2 Fault:";
 			// 
 			// lblTorque1Fault
 			// 

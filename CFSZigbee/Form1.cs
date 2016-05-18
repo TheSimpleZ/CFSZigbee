@@ -122,10 +122,11 @@ namespace CFSZigbee
 						//First byte is the error byte
 						var error = sp.ReadByte();
 
-						for (var i = 0; i < rc.Errors.Count; i++)
-						{
-							rc.Errors[(Racecar.ErrorType)i] = (error & (1 << i)) != 0;
-						}
+						rc.ThrottleImplaus			= (error & (1 << 1)) != 0;
+						rc.Throttle1Fault				= (error & (1 << 2)) != 0;
+						rc.Throttle2Fault				= (error & (1 << 3)) != 0;
+						rc.ThrottleBrakeImplaus = (error & (1 << 4)) != 0;
+						rc.BrakeFault						= (error & (1 << 5)) != 0;
 
 						//Second byte is RTD
 						var rtd = sp.ReadByte();
@@ -134,7 +135,7 @@ namespace CFSZigbee
 
 					case 2: // Rear Node
 						rc.ShutdownCurrent = sp.ReadByte() != 0;
-						rc.TorqueEncoderPosition = sp.ReadByte() | (sp.ReadByte() << 8);
+						rc.ThrottlePosition = sp.ReadByte() | (sp.ReadByte() << 8);
 						break;
 				}
 
