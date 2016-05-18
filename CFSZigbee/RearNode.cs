@@ -13,12 +13,12 @@ namespace CFSZigbee
 {
 	public partial class RearNode : Form
 	{
-		Racecar car = Racecar.Instance;
-		SerialPort xBee;
+		private readonly Racecar _car = Racecar.Instance;
+		readonly SerialPort _xBee;
 		public RearNode(SerialPort sp)
 		{
 			InitializeComponent();
-			xBee = sp;
+			_xBee = sp;
 		}
 
 		private void RearNode_FormClosing(object sender, FormClosingEventArgs e)
@@ -28,27 +28,20 @@ namespace CFSZigbee
 		}
 
 
-		byte[] poll = new byte[5] { 0x7B, 0x7B, 0x01, 0x04, 0x04 }; // Poll for rear node data
-		byte[] stopPoll = new byte[5] { 0x7B, 0x7B, 0x00, 0x04, 0x04 }; // Stop polling for rear node data
+		private readonly byte[] _poll = { 0x7B, 0x7B, 0x01, 0x04, 0x04 }; // Poll for rear node data
+		private readonly byte[] _stopPoll = { 0x7B, 0x7B, 0x00, 0x04, 0x04 }; // Stop polling for rear node data
 		private void RearNode_VisibleChanged(object sender, EventArgs e)
 		{
-			if (xBee.IsOpen)
+			if (_xBee.IsOpen)
 			{
-				if (Visible)
-				{
-					xBee.Write(poll, 0, 5);
-				}
-				else
-				{
-					xBee.Write(stopPoll, 0, 5);
-				}
+				_xBee.Write(Visible ? _poll : _stopPoll, 0, 5);
 			}
 		}
 
 		private void GUIUpdate_Tick(object sender, EventArgs e)
 		{
-			lblShutdownCurrent.Text = car.ShutdownCurrent ? "ON" : "OFF";
-			lblTorqueReq.Text = ((double)car.TorqueEncoderPosition/100).ToString() + " Nm";
+			lblShutdownCurrent.Text = _car.ShutdownCurrent ? "ON" : "OFF";
+			lblTorqueReq.Text = ((double)_car.TorqueEncoderPosition/100) + " Nm";
 		}
 	}
 }

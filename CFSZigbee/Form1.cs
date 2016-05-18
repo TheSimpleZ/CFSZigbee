@@ -1,35 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO.Ports;
 using System.Threading;
-using System.Diagnostics;
-
+using System.Windows.Forms;
 
 namespace CFSZigbee
 {
 	public partial class Form1 : Form
 	{
-		Racecar car;
-		private Queue<byte> recievedData = new Queue<byte>();
-		Thread childThread;
-		FrontNode FN;
-		RearNode RN;
+		readonly Thread _childThread;
+		private readonly FrontNode _fn;
+		private readonly RearNode _rn;
 
 		public Form1()
 		{
 			InitializeComponent();
-			car = Racecar.Instance;
-			FN = new FrontNode(xBee);
-			RN = new RearNode(xBee);
-			ThreadStart childref = new ThreadStart(() => readSerial(xBee));
-			childThread = new Thread(childref);
+			_fn = new FrontNode(xBee);
+			_rn = new RearNode(xBee);
+			ThreadStart childref = () => ReadSerial(xBee);
+			_childThread = new Thread(childref);
 		}
 
 		private void Form1_Load(object sender, EventArgs e)
@@ -52,8 +40,8 @@ namespace CFSZigbee
 				btnRefresh.Enabled = false;
 				xBee.Open();
 
-				if(childThread.ThreadState != System.Threading.ThreadState.Running)
-					childThread.Start();
+				if(_childThread.ThreadState != ThreadState.Running)
+					_childThread.Start();
 
 				btnOpen.Text = "Close";
 			} else
@@ -67,43 +55,43 @@ namespace CFSZigbee
 		}
 
 
-		byte[] stopPoll = new byte[10] { 0x7A, 0x7A, 0x00, 0x04, 0x04, 0x7B, 0x7B, 0x00, 0x04, 0x04 }; // Stop polling for all nodes
+		readonly byte[] _stopPoll = { 0x7A, 0x7A, 0x00, 0x04, 0x04, 0x7B, 0x7B, 0x00, 0x04, 0x04 }; // Stop polling for all nodes
 		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
 		{
 
 
 
-			if(childThread.IsAlive)
-				childThread.Abort();
+			if(_childThread.IsAlive)
+				_childThread.Abort();
 
 			if (xBee.IsOpen)
 			{
-				xBee.Write(stopPoll, 0, 5);
-				xBee.Write(stopPoll, 5, 5);
+				xBee.Write(_stopPoll, 0, 5);
+				xBee.Write(_stopPoll, 5, 5);
 				xBee.Close();
 			}
-			FN.Close();
-			RN.Close();
+			_fn.Close();
+			_rn.Close();
 
-			FN.Dispose();
-			RN.Dispose();
+			_fn.Dispose();
+			_rn.Dispose();
 		}
 
 		
 		private void btnFrontNode_Click(object sender, EventArgs e)
 		{
-			FN.Show();
+			_fn.Show();
 		}
 
 		private void btnRearNode_Click(object sender, EventArgs e)
 		{
-			RN.Show();
+			_rn.Show();
 		}
 
 		// Read serial data from zigbee in different thread
-		private static void readSerial(SerialPort sp)
+		private static void ReadSerial(SerialPort sp)
 		{
-			Racecar rc = Racecar.Instance;
+			var rc = Racecar.Instance;
 
 			int b1, b2;
 
@@ -120,40 +108,39 @@ namespace CFSZigbee
 
 				//2 sync bytes
 				b1 = sp.ReadByte();
-				if (b1 != 0x7E)
-					continue;
+
+				if (b1 != 0x7E) continue;
 
 				b2 = sp.ReadByte();
 
-				if ((b1 & b2) == 0x7E)
+				if ((b1 & b2) != 0x7E) continue;
+
+				//Then the function code
+				switch (sp.ReadByte())
 				{
-					//Then the function code
-					switch (sp.ReadByte())
-					{
-						case 1: // Front Node
-							//First byte is the error byte
-							int error = sp.ReadByte();
+					case 1: // Front Node
+						//First byte is the error byte
+						var error = sp.ReadByte();
 
-							for (int i = 0; i < rc.Errors.Count; i++)
-							{
-								rc.Errors[(Racecar.ErrorType)i] = (error & (1 << i)) != 0;
-							}
+						for (var i = 0; i < rc.Errors.Count; i++)
+						{
+							rc.Errors[(Racecar.ErrorType)i] = (error & (1 << i)) != 0;
+						}
 
-							//Second byte is RTD
-							int rtd = sp.ReadByte();
-							rc.RTD = rtd != 0;
-							break;
+						//Second byte is RTD
+						var rtd = sp.ReadByte();
+						rc.Rtd = rtd != 0;
+						break;
 
-						case 2: // Rear Node
-							rc.ShutdownCurrent = sp.ReadByte() != 0;
-							rc.TorqueEncoderPosition = sp.ReadByte() | (sp.ReadByte() << 8);
-							break;
-					}
-
-					//Remove terminators
-					sp.ReadByte();
-					sp.ReadByte();
+					case 2: // Rear Node
+						rc.ShutdownCurrent = sp.ReadByte() != 0;
+						rc.TorqueEncoderPosition = sp.ReadByte() | (sp.ReadByte() << 8);
+						break;
 				}
+
+				//Remove terminators
+				sp.ReadByte();
+				sp.ReadByte();
 			}
 		}
 

@@ -8,7 +8,7 @@ namespace CFSZigbee
 {
 	class Racecar
 	{
-		private static readonly Racecar instance = new Racecar();
+		private static readonly Racecar _instance = new Racecar();
 
 		static Racecar()
 		{ }
@@ -25,29 +25,24 @@ namespace CFSZigbee
 
 
 
-		public enum ErrorType : int
+		public enum ErrorType
 		{
-			torqueImplaus = 0,
-			throttle1Fault,
-			throttle2Fault,
-			throttleBrakeImplaus,
-			brakeFault
+			TorqueImplaus = 0,
+			Throttle1Fault,
+			Throttle2Fault,
+			ThrottleBrakeImplaus,
+			BrakeFault
 
 		}
 
-		public bool RTD = false, ShutdownCurrent = false, PWMLeft = false, PWMRight = false;
+		public bool Rtd = false, ShutdownCurrent = false;
 		public int TorqueEncoderPosition = 0, TorqueReqLeft = 0, TorqueReqRight = 0, RadiatorFanDutyCycle = 0, BatteryFansDutyCycle = 0;
-		public byte setBits
+		public Motor LeftMotor = new Motor();
+		public Motor RightMotor = new Motor();
 
 
 
 
-		public static Racecar Instance
-		{
-			get { return instance; }
-		}
-
-
-
-		}
+		public static Racecar Instance => _instance;
+	}
 }
