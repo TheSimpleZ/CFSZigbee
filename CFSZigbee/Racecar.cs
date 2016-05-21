@@ -30,6 +30,10 @@ namespace CFSZigbee
 		private int _throttlePosition;
 		private int _radiatorFanDutyCycle;
 		private int _batteryFansDutyCycle;
+		private int _steeringPsition;
+		private int _frontBrakePressure;
+		private int _rightBrakeTemp;
+		private int _leftBrakeTemp;
 		public Motor LeftMotor { get; }
 		public Motor RightMotor { get; }
 
@@ -163,6 +167,50 @@ namespace CFSZigbee
 
 				_brakeFault = value;
 				OnPropertyChanged(nameof(BrakeFault));
+			}
+		}
+
+		public int LeftBrakeTemp
+		{
+			get { return _leftBrakeTemp; }
+			set
+			{
+				if (value == _leftBrakeTemp) return;
+				_leftBrakeTemp = value;
+				OnPropertyChanged(nameof(LeftBrakeTemp));
+			}
+		}
+
+		public int RightBrakeTemp
+		{
+			get { return _rightBrakeTemp; }
+			set
+			{
+				if (value == _rightBrakeTemp) return;
+				_rightBrakeTemp = value;
+				OnPropertyChanged(nameof(RightBrakeTemp));
+			}
+		}
+
+		public int FrontBrakePressure
+		{
+			get { return _frontBrakePressure; }
+			set
+			{
+				if (value == _frontBrakePressure) return;
+				_frontBrakePressure = value;
+				OnPropertyChanged(nameof(FrontBrakePressure));
+			}
+		}
+
+		public int SteeringPsition
+		{
+			get { return _steeringPsition; }
+			set
+			{
+				if (value == _steeringPsition) return;
+				_steeringPsition = value;
+				OnPropertyChanged(nameof(SteeringPsition));
 			}
 		}
 

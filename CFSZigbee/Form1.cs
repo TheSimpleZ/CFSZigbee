@@ -93,9 +93,6 @@ namespace CFSZigbee
 		{
 			var rc = Racecar.Instance;
 
-			int b1, b2;
-
-			
 
 			while (true)
 			{
@@ -107,19 +104,26 @@ namespace CFSZigbee
 					continue;
 
 				//2 sync bytes
-				b1 = sp.ReadByte();
+				var b1 = sp.ReadByte();
 
 				if (b1 != 0x7E) continue;
 
-				b2 = sp.ReadByte();
+				var b2 = sp.ReadByte();
 
 				if ((b1 & b2) != 0x7E) continue;
 
 				//Then the function code
+				// ReSharper disable SwitchStatementMissingSomeCases
 				switch (sp.ReadByte())
+					// ReSharper restore SwitchStatementMissingSomeCases
 				{
 					case 1: // Front Node
-						//First byte is the error byte
+						
+						// First byte: RTD
+						var rtd = sp.ReadByte();
+						rc.Rtd = rtd != 0;
+
+						// Second byte: error byte
 						var error = sp.ReadByte();
 
 						rc.ThrottleImplaus			= (error & (1 << 1)) != 0;
@@ -128,9 +132,21 @@ namespace CFSZigbee
 						rc.ThrottleBrakeImplaus = (error & (1 << 4)) != 0;
 						rc.BrakeFault						= (error & (1 << 5)) != 0;
 
-						//Second byte is RTD
-						var rtd = sp.ReadByte();
-						rc.Rtd = rtd != 0;
+						// Third & 4th byte: Brake temps
+						rc.LeftBrakeTemp = sp.ReadByte();
+						rc.RightBrakeTemp = sp.ReadByte();
+
+						// 5th byte: Throttle position
+						rc.ThrottlePosition = sp.ReadByte();
+						
+						// 6th byte: Front Brake Pressure
+						rc.FrontBrakePressure = sp.ReadByte();
+						
+						// 7th byte: Steering Position
+						rc.SteeringPosition = sp.ReadByte();
+
+
+
 						break;
 
 					case 2: // Rear Node
