@@ -30,7 +30,7 @@ namespace CFSZigbee
 		private int _throttlePosition;
 		private int _radiatorFanDutyCycle;
 		private int _batteryFansDutyCycle;
-		private int _steeringPsition;
+		private int _steeringPosition;
 		private int _frontBrakePressure;
 		private int _rightBrakeTemp;
 		private int _leftBrakeTemp;
@@ -203,14 +203,14 @@ namespace CFSZigbee
 			}
 		}
 
-		public int SteeringPsition
+		public int SteeringPosition
 		{
-			get { return _steeringPsition; }
+			get { return _steeringPosition; }
 			set
 			{
-				if (value == _steeringPsition) return;
-				_steeringPsition = value;
-				OnPropertyChanged(nameof(SteeringPsition));
+				if (value == _steeringPosition) return;
+				_steeringPosition = value;
+				OnPropertyChanged(nameof(SteeringPosition));
 			}
 		}
 

@@ -32,7 +32,6 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.lblBrakeFault = new System.Windows.Forms.Label();
-			this.racecarBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.label7 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.lblTorque1Fault = new System.Windows.Forms.Label();
@@ -54,9 +53,10 @@
 			this.label14 = new System.Windows.Forms.Label();
 			this.label15 = new System.Windows.Forms.Label();
 			this.label16 = new System.Windows.Forms.Label();
-			((System.ComponentModel.ISupportInitialize)(this.racecarBindingSource)).BeginInit();
+			this.racecarBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.racecarBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label3
@@ -86,10 +86,6 @@
 			this.lblBrakeFault.Size = new System.Drawing.Size(51, 17);
 			this.lblBrakeFault.TabIndex = 12;
 			this.lblBrakeFault.Text = "FALSE";
-			// 
-			// racecarBindingSource
-			// 
-			this.racecarBindingSource.DataSource = typeof(CFSZigbee.Racecar);
 			// 
 			// label7
 			// 
@@ -290,7 +286,7 @@
 			// label13
 			// 
 			this.label13.AutoSize = true;
-			this.label13.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "ThrottlePosition", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0"));
+			this.label13.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "FrontBrakePressure", true));
 			this.label13.Location = new System.Drawing.Point(156, 64);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(16, 17);
@@ -300,7 +296,7 @@
 			// label14
 			// 
 			this.label14.AutoSize = true;
-			this.label14.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "ThrottlePosition", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0"));
+			this.label14.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "LeftBrakeTemp", true));
 			this.label14.Location = new System.Drawing.Point(156, 96);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(16, 17);
@@ -310,7 +306,7 @@
 			// label15
 			// 
 			this.label15.AutoSize = true;
-			this.label15.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "ThrottlePosition", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0"));
+			this.label15.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "RightBrakeTemp", true));
 			this.label15.Location = new System.Drawing.Point(156, 128);
 			this.label15.Name = "label15";
 			this.label15.Size = new System.Drawing.Size(16, 17);
@@ -320,12 +316,16 @@
 			// label16
 			// 
 			this.label16.AutoSize = true;
-			this.label16.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "ThrottlePosition", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0"));
+			this.label16.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "SteeringPosition", true));
 			this.label16.Location = new System.Drawing.Point(156, 160);
 			this.label16.Name = "label16";
 			this.label16.Size = new System.Drawing.Size(16, 17);
 			this.label16.TabIndex = 26;
 			this.label16.Text = "0";
+			// 
+			// racecarBindingSource
+			// 
+			this.racecarBindingSource.DataSource = typeof(CFSZigbee.Racecar);
 			// 
 			// FrontNode
 			// 
@@ -338,11 +338,11 @@
 			this.Text = "Front Node";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrontNode_FormClosing);
 			this.VisibleChanged += new System.EventHandler(this.FrontNode_VisibleChanged);
-			((System.ComponentModel.ISupportInitialize)(this.racecarBindingSource)).EndInit();
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tableLayoutPanel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.racecarBindingSource)).EndInit();
 			this.ResumeLayout(false);
 
 		}
