@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using CFSZigbee.Annotations;
 
 namespace CFSZigbee
@@ -12,41 +7,25 @@ namespace CFSZigbee
 	class Motor : INotifyPropertyChanged
 	{
 		private byte _setBits, _statusBits;
+		private ushort _errors;
 
-		public Dictionary<ErrorType, bool> Errors = new Dictionary<ErrorType, bool>();
+		
 		private int _estSpeed;
 		private int _estTorque;
-		private int _inverterTemp;
+		private uint _inverterTemp;
 		private int _motorCurrent;
-		private int _motorTemp;
+		private uint _motorTemp;
 		private int _reqSpeed;
 		private int _reqTorque;
-		private int _supplyVoltage;
-		private int _estPower;
-
-		public Motor ()
-		{
-			foreach (var value in Enum.GetValues(typeof(ErrorType)).Cast<ErrorType>())
-			{
-				Errors.Add(value, false);
-			}
-		}
-
-		public enum ErrorType
-		{
-			OverCurrent = 0,
-			HighUdc,
-			LowUdc,
-			EmergencyStop,
-			MotorOverTemp,
-			InverterOverTemp,
-			MotorOverload,
-			SensorFault,
-			CommunicationFault,
-			OverSpeed
-		}
+		private uint _supplyVoltage;
+		private uint _estPower;
 
 		private static bool IsBitSet(byte val, int pos)
+		{
+			return (val & (1 << pos)) == (1 << pos);
+		}
+
+		private static bool IsBitSet(ushort val, int pos)
 		{
 			return (val & (1 << pos)) == (1 << pos);
 		}
@@ -62,6 +41,20 @@ namespace CFSZigbee
 			{
 				//left-shift 1, then take complement, then bitwise AND
 				aByte = (byte)(aByte & ~(1 << pos));
+			}
+		}
+
+		public static void Setbit(ref ushort aByte, int pos, bool value)
+		{
+			if (value)
+			{
+				//left-shift 1, then bitwise OR
+				aByte = (ushort)(aByte | (1 << pos));
+			}
+			else
+			{
+				//left-shift 1, then take complement, then bitwise AND
+				aByte = (ushort)(aByte & ~(1 << pos));
 			}
 		}
 
@@ -121,7 +114,7 @@ namespace CFSZigbee
 			}
 		}
 
-		public int EstPower
+		public uint EstPower
 		{
 			get { return _estPower; }
 			set
@@ -154,7 +147,7 @@ namespace CFSZigbee
 			}
 		}
 
-		public int InverterTemp
+		public uint InverterTemp
 		{
 			get { return _inverterTemp; }
 			set
@@ -176,7 +169,7 @@ namespace CFSZigbee
 			}
 		}
 
-		public int MotorTemp
+		public uint MotorTemp
 		{
 			get { return _motorTemp; }
 			set
@@ -209,7 +202,7 @@ namespace CFSZigbee
 			}
 		}
 
-		public int SupplyVoltage
+		public uint SupplyVoltage
 		{
 			get { return _supplyVoltage; }
 			set
@@ -219,6 +212,156 @@ namespace CFSZigbee
 				OnPropertyChanged(nameof(SupplyVoltage));
 			}
 		}
+
+		public bool OverCurrent
+		{
+			get { return IsBitSet(_errors, 0); }
+			set
+			{
+				if (value && IsBitSet(_errors, 0) || !(value || IsBitSet(_errors, 0)))
+					return;
+
+				Setbit(ref _errors, 0, value);
+
+				OnPropertyChanged(nameof(OverCurrent));
+			}
+		}
+
+		public bool HighUdc
+		{
+			get { return IsBitSet(_errors, 1); }
+			set
+			{
+				if (value && IsBitSet(_errors, 1) || !(value || IsBitSet(_errors, 1)))
+					return;
+
+				Setbit(ref _errors, 1, value);
+				OnPropertyChanged(nameof(HighUdc));
+			}
+		}
+
+		public bool LowUdc
+		{
+			get { return IsBitSet(_errors, 2); }
+			set
+			{
+				if (value && IsBitSet(_errors, 2) || !(value || IsBitSet(_errors, 2)))
+					return;
+
+				Setbit(ref _errors, 2, value);
+				OnPropertyChanged(nameof(LowUdc));
+			}
+		}
+
+		public bool EmergencyStop
+		{
+			get { return IsBitSet(_errors, 3); }
+			set
+			{
+				if (value && IsBitSet(_errors, 3) || !(value || IsBitSet(_errors, 3)))
+					return;
+
+				Setbit(ref _errors, 3, value);
+				OnPropertyChanged(nameof(EmergencyStop));
+			}
+		}
+
+		public bool MotorOverTemp
+		{
+			get { return IsBitSet(_errors, 4); }
+			set
+			{
+				if (value && IsBitSet(_errors, 4) || !(value || IsBitSet(_errors, 4)))
+					return;
+
+				Setbit(ref _errors, 4, value);
+				OnPropertyChanged(nameof(MotorOverTemp));
+			}
+		}
+
+		public bool InverterOverTemp
+		{
+			get { return IsBitSet(_errors, 5); }
+			set
+			{
+				if (value && IsBitSet(_errors, 5) || !(value || IsBitSet(_errors, 5)))
+					return;
+
+				Setbit(ref _errors, 5, value);
+				OnPropertyChanged(nameof(InverterOverTemp));
+			}
+		}
+
+		public bool MotorOverload
+		{
+			get { return IsBitSet(_errors, 6); }
+			set
+			{
+				if (value && IsBitSet(_errors, 6) || !(value || IsBitSet(_errors, 6)))
+					return;
+
+				Setbit(ref _errors, 6, value);
+				OnPropertyChanged(nameof(MotorOverload));
+			}
+		}
+
+		public bool SensorFault
+		{
+			get { return IsBitSet(_errors, 7); }
+			set
+			{
+				if (value && IsBitSet(_errors, 7) || !(value || IsBitSet(_errors, 7)))
+					return;
+
+				Setbit(ref _errors, 7, value);
+				OnPropertyChanged(nameof(SensorFault));
+			}
+		}
+
+		public bool CommunicationFault
+		{
+			get { return IsBitSet(_errors, 8); }
+			set
+			{
+				if (value && IsBitSet(_errors, 8) || !(value || IsBitSet(_errors, 8)))
+					return;
+
+				Setbit(ref _errors, 8, value);
+				OnPropertyChanged(nameof(CommunicationFault));
+			}
+		}
+
+		public bool OverSpeed
+		{
+			get { return IsBitSet(_errors, 9); }
+			set
+			{
+				if (value && IsBitSet(_errors, 9) || !(value || IsBitSet(_errors, 9)))
+					return;
+
+				Setbit(ref _errors, 9, value);
+				OnPropertyChanged(nameof(OverSpeed));
+			}
+		}
+
+		public byte SetBits
+		{
+			get { return _setBits; }
+			set { _setBits = value; }
+		}
+
+		public byte StatusBits
+		{
+			get { return _statusBits; }
+			set { _statusBits = value; }
+		}
+
+		public ushort Errors
+		{
+			get { return _errors; }
+			set { _errors = value; }
+		}
+
 
 		public event PropertyChangedEventHandler PropertyChanged;
 

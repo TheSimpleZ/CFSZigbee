@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.groupBox9 = new System.Windows.Forms.GroupBox();
 			this.RMotorOverspeed = new System.Windows.Forms.Label();
 			this.RCommFault = new System.Windows.Forms.Label();
@@ -126,12 +127,14 @@
 			this.LReqTorque = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
+			this.racecarBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.groupBox9.SuspendLayout();
 			this.groupBox12.SuspendLayout();
 			this.groupBox13.SuspendLayout();
 			this.groupBox8.SuspendLayout();
 			this.groupBox11.SuspendLayout();
 			this.groupBox10.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.racecarBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox9
@@ -1112,6 +1115,10 @@
 			this.label4.TabIndex = 57;
 			this.label4.Text = "Torque:";
 			// 
+			// racecarBindingSource
+			// 
+			this.racecarBindingSource.DataSource = typeof(CFSZigbee.Racecar);
+			// 
 			// PowerElectronics
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1121,6 +1128,8 @@
 			this.Controls.Add(this.groupBox8);
 			this.Name = "PowerElectronics";
 			this.Text = "PowerElectronics";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PowerElectronics_FormClosing);
+			this.VisibleChanged += new System.EventHandler(this.PowerElectronics_VisibleChanged);
 			this.groupBox9.ResumeLayout(false);
 			this.groupBox9.PerformLayout();
 			this.groupBox12.ResumeLayout(false);
@@ -1133,6 +1142,7 @@
 			this.groupBox11.PerformLayout();
 			this.groupBox10.ResumeLayout(false);
 			this.groupBox10.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.racecarBindingSource)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -1237,5 +1247,6 @@
 		private System.Windows.Forms.Label LReqTorque;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.BindingSource racecarBindingSource;
 	}
 }

@@ -144,14 +144,79 @@ namespace CFSZigbee
 						
 						// 7th byte: Steering Position
 						rc.SteeringPosition = sp.ReadByte();
-
-
-
 						break;
 
 					case 2: // Rear Node
 						rc.ShutdownCurrent = sp.ReadByte() != 0;
-						rc.ThrottlePosition = sp.ReadByte() | (sp.ReadByte() << 8);
+						break;
+
+					case 3: // Power Electronics
+
+						// UINT8
+						// 1: REstStatus
+						rc.RightMotor.StatusBits = (byte) sp.ReadByte();
+
+						// 2: RMotorTemp
+						rc.RightMotor.MotorTemp = (uint) sp.ReadByte();
+
+						// 3: RInvTemp
+						rc.RightMotor.InverterTemp = (uint) sp.ReadByte();
+
+						// 4: LEstStatus
+						rc.LeftMotor.StatusBits = (byte)sp.ReadByte();
+
+						// 5: LMotorTemp
+						rc.LeftMotor.MotorTemp = (uint) sp.ReadByte();
+
+						// 6: LInvTemp
+						rc.LeftMotor.InverterTemp = (uint) sp.ReadByte();
+
+						// INT16
+
+						// 7: RReqTorque
+						rc.RightMotor.ReqTorque = sp.ReadByte() | (sp.ReadByte() << 8);
+
+						// 8: REstSpeed
+						rc.RightMotor.EstSpeed = sp.ReadByte() | (sp.ReadByte() << 8);
+
+						// 9: REstTorque
+						rc.RightMotor.EstTorque = sp.ReadByte() | (sp.ReadByte() << 8);
+
+						// 10: RMotorCurrent
+						rc.RightMotor.MotorCurrent = sp.ReadByte() | (sp.ReadByte() << 8);
+
+						// 11: LReqTorque
+						rc.LeftMotor.ReqTorque = sp.ReadByte() | (sp.ReadByte() << 8);
+
+						// 12: LEstSpeed
+						rc.LeftMotor.EstSpeed = sp.ReadByte() | (sp.ReadByte() << 8);
+
+						// 13: LEstToruq
+						rc.LeftMotor.EstTorque = sp.ReadByte() | (sp.ReadByte() << 8);
+
+						// 14: LMotorCurrent
+						rc.LeftMotor.MotorCurrent = sp.ReadByte() | (sp.ReadByte() << 8);
+
+						// UINT16
+
+						// 15: RPower
+						rc.RightMotor.EstPower = (uint) (sp.ReadByte() | (sp.ReadByte() << 8));
+
+						// 16: RVoltage
+						rc.RightMotor.SupplyVoltage = (uint) (sp.ReadByte() | (sp.ReadByte() << 8));
+
+						// 17: RErrors
+						rc.RightMotor.Errors = (ushort)(sp.ReadByte() | (sp.ReadByte() << 8));
+
+						// 18: LPower
+						rc.LeftMotor.EstPower = (uint)(sp.ReadByte() | (sp.ReadByte() << 8));
+
+						// 19: LVoltage
+						rc.LeftMotor.SupplyVoltage = (uint)(sp.ReadByte() | (sp.ReadByte() << 8));
+
+						// 20: LErrors
+						rc.LeftMotor.Errors = (ushort)(sp.ReadByte() | (sp.ReadByte() << 8));
+
 						break;
 				}
 
