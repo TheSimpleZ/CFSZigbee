@@ -33,7 +33,6 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.lblShutdownCurrent = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.GUIUpdate = new System.Windows.Forms.Timer(this.components);
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.label18 = new System.Windows.Forms.Label();
@@ -57,8 +56,10 @@
 			this.label22 = new System.Windows.Forms.Label();
 			this.label23 = new System.Windows.Forms.Label();
 			this.label24 = new System.Windows.Forms.Label();
+			this.racecarBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.racecarBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -82,6 +83,7 @@
 			// lblShutdownCurrent
 			// 
 			this.lblShutdownCurrent.AutoSize = true;
+			this.lblShutdownCurrent.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "ShutdownCurrent", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.lblShutdownCurrent.Location = new System.Drawing.Point(143, 0);
 			this.lblShutdownCurrent.Name = "lblShutdownCurrent";
 			this.lblShutdownCurrent.Size = new System.Drawing.Size(35, 17);
@@ -96,12 +98,6 @@
 			this.label4.Size = new System.Drawing.Size(134, 17);
 			this.label4.TabIndex = 3;
 			this.label4.Text = "Right Spring Travel:";
-			// 
-			// GUIUpdate
-			// 
-			this.GUIUpdate.Enabled = true;
-			this.GUIUpdate.Interval = 300;
-			this.GUIUpdate.Tick += new System.EventHandler(this.GUIUpdate_Tick);
 			// 
 			// tableLayoutPanel1
 			// 
@@ -170,6 +166,7 @@
 			// label18
 			// 
 			this.label18.AutoSize = true;
+			this.label18.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "AmbientTemp", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.label18.Location = new System.Drawing.Point(108, 174);
 			this.label18.Name = "label18";
 			this.label18.Size = new System.Drawing.Size(16, 17);
@@ -188,6 +185,7 @@
 			// label15
 			// 
 			this.label15.AutoSize = true;
+			this.label15.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "Zrot", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.label15.Location = new System.Drawing.Point(108, 145);
 			this.label15.Name = "label15";
 			this.label15.Size = new System.Drawing.Size(16, 17);
@@ -206,6 +204,7 @@
 			// label13
 			// 
 			this.label13.AutoSize = true;
+			this.label13.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "Yrot", true));
 			this.label13.Location = new System.Drawing.Point(108, 116);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(16, 17);
@@ -224,6 +223,7 @@
 			// label11
 			// 
 			this.label11.AutoSize = true;
+			this.label11.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "Xrot", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.label11.Location = new System.Drawing.Point(108, 87);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(16, 17);
@@ -242,6 +242,7 @@
 			// label9
 			// 
 			this.label9.AutoSize = true;
+			this.label9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "Z", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.label9.Location = new System.Drawing.Point(108, 58);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(16, 17);
@@ -260,6 +261,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
+			this.label7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "Y", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.label7.Location = new System.Drawing.Point(108, 29);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(16, 17);
@@ -278,6 +280,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
+			this.label5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "X", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.label5.Location = new System.Drawing.Point(108, 0);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(16, 17);
@@ -305,6 +308,7 @@
 			// label19
 			// 
 			this.label19.AutoSize = true;
+			this.label19.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "LeftSpringTravel", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.label19.Location = new System.Drawing.Point(143, 30);
 			this.label19.Name = "label19";
 			this.label19.Size = new System.Drawing.Size(16, 17);
@@ -314,6 +318,7 @@
 			// label20
 			// 
 			this.label20.AutoSize = true;
+			this.label20.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "RightSpringTravel", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.label20.Location = new System.Drawing.Point(143, 60);
 			this.label20.Name = "label20";
 			this.label20.Size = new System.Drawing.Size(16, 17);
@@ -332,6 +337,7 @@
 			// label22
 			// 
 			this.label22.AutoSize = true;
+			this.label22.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "WaterTempIn", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.label22.Location = new System.Drawing.Point(143, 90);
 			this.label22.Name = "label22";
 			this.label22.Size = new System.Drawing.Size(16, 17);
@@ -350,11 +356,16 @@
 			// label24
 			// 
 			this.label24.AutoSize = true;
+			this.label24.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "WaterTempOut", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.label24.Location = new System.Drawing.Point(143, 120);
 			this.label24.Name = "label24";
 			this.label24.Size = new System.Drawing.Size(16, 17);
 			this.label24.TabIndex = 17;
 			this.label24.Text = "0";
+			// 
+			// racecarBindingSource
+			// 
+			this.racecarBindingSource.DataSource = typeof(CFSZigbee.Racecar);
 			// 
 			// RearNode
 			// 
@@ -372,6 +383,7 @@
 			this.tableLayoutPanel1.PerformLayout();
 			this.tableLayoutPanel2.ResumeLayout(false);
 			this.tableLayoutPanel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.racecarBindingSource)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -383,7 +395,6 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label lblShutdownCurrent;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Timer GUIUpdate;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.Label label15;
@@ -407,5 +418,6 @@
 		private System.Windows.Forms.Label label21;
 		private System.Windows.Forms.Label label20;
 		private System.Windows.Forms.Label label19;
+		private System.Windows.Forms.BindingSource racecarBindingSource;
 	}
 }

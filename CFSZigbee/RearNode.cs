@@ -37,11 +37,5 @@ namespace CFSZigbee
 				_xBee.Write(Visible ? _poll : _stopPoll, 0, 5);
 			}
 		}
-
-		private void GUIUpdate_Tick(object sender, EventArgs e)
-		{
-			lblShutdownCurrent.Text = _car.ShutdownCurrent ? "ON" : "OFF";
-			lblTorqueReq.Text = ((double)_car.ThrottlePosition/100) + " Nm";
-		}
 	}
 }
