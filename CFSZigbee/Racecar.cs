@@ -34,6 +34,17 @@ namespace CFSZigbee
 		private int _frontBrakePressure;
 		private int _rightBrakeTemp;
 		private int _leftBrakeTemp;
+		private double _x;
+		private double _y;
+		private double _z;
+		private double _xrot;
+		private double _yrot;
+		private double _zrot;
+		private double _ambientTemp;
+		private double _waterTempIn;
+		private double _waterTempOut;
+		private int _leftSpringTravel;
+		private int _rightSpringTravel;
 		public Motor LeftMotor { get; }
 		public Motor RightMotor { get; }
 
@@ -211,6 +222,127 @@ namespace CFSZigbee
 				if (value == _steeringPosition) return;
 				_steeringPosition = value;
 				OnPropertyChanged(nameof(SteeringPosition));
+			}
+		}
+#region IMU
+		public double X
+		{
+			get { return _x; }
+			set
+			{
+				if (value.Equals(_x)) return;
+				_x = value;
+				OnPropertyChanged(nameof(X));
+			}
+		}
+
+		public double Y
+		{
+			get { return _y; }
+			set
+			{
+				if (value.Equals(_y)) return;
+				_y = value;
+				OnPropertyChanged(nameof(Y));
+			}
+		}
+
+		public double Z
+		{
+			get { return _z; }
+			set
+			{
+				if (value.Equals(_z)) return;
+				_z = value;
+				OnPropertyChanged(nameof(Z));
+			}
+		}
+
+		public double Xrot
+		{
+			get { return _xrot; }
+			set
+			{
+				if (value.Equals(_xrot)) return;
+				_xrot = value;
+				OnPropertyChanged(nameof(Xrot));
+			}
+		}
+
+		public double Yrot
+		{
+			get { return _yrot; }
+			set
+			{
+				if (value.Equals(_yrot)) return;
+				_yrot = value;
+				OnPropertyChanged(nameof(Yrot));
+			}
+		}
+
+		public double Zrot
+		{
+			get { return _zrot; }
+			set
+			{
+				if (value.Equals(_zrot)) return;
+				_zrot = value;
+				OnPropertyChanged(nameof(Zrot));
+			}
+		}
+
+		public double AmbientTemp
+		{
+			get { return _ambientTemp; }
+			set
+			{
+				if (value.Equals(_ambientTemp)) return;
+				_ambientTemp = value;
+				OnPropertyChanged(nameof(AmbientTemp));
+			}
+		}
+#endregion
+		public double WaterTempIn
+		{
+			get { return _waterTempIn; }
+			set
+			{
+				if (value.Equals(_waterTempIn)) return;
+				_waterTempIn = value;
+				OnPropertyChanged(nameof(WaterTempIn));
+			}
+		}
+
+		public double WaterTempOut
+		{
+			get { return _waterTempOut; }
+			set
+			{
+				if (value.Equals(_waterTempOut)) return;
+				_waterTempOut = value;
+				OnPropertyChanged(nameof(WaterTempOut));
+			}
+		}
+
+		public int LeftSpringTravel
+		{
+			get { return _leftSpringTravel; }
+			set
+			{
+				if (value == _leftSpringTravel) return;
+				_leftSpringTravel = value;
+				OnPropertyChanged(nameof(LeftSpringTravel));
+			}
+		}
+
+		public int RightSpringTravel
+		{
+			get { return _rightSpringTravel; }
+			set
+			{
+				if (value == _rightSpringTravel) return;
+				_rightSpringTravel = value;
+				OnPropertyChanged(nameof(RightSpringTravel));
 			}
 		}
 

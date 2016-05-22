@@ -151,7 +151,22 @@ namespace CFSZigbee
 
 					case 2: // Rear Node
 						rc.ShutdownCurrent = sp.ReadByte() != 0;
-						rc.ThrottlePosition = sp.ReadByte() | (sp.ReadByte() << 8);
+						rc.LeftSpringTravel = sp.ReadByte();
+						rc.RightSpringTravel = sp.ReadByte();
+
+
+						// IMU
+						rc.X = (double) sp.ReadByte()/100;
+						rc.Y = (double)sp.ReadByte()/100;
+						rc.Z = (double)sp.ReadByte()/100;
+						rc.Xrot = (double)sp.ReadByte()/100;
+						rc.Yrot = (double)sp.ReadByte()/100;
+						rc.Zrot = (double)sp.ReadByte()/100;
+						rc.AmbientTemp = (double)sp.ReadByte()/100;
+
+						//Water Temp
+						rc.WaterTempIn = (double)sp.ReadByte()/100;
+						rc.WaterTempOut = (double)sp.ReadByte()/100;
 						break;
 				}
 
