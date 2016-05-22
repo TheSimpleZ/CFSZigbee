@@ -145,6 +145,11 @@ namespace CFSZigbee
 						// 7th byte: Steering Position
 						rc.SteeringPosition = sp.ReadByte();
 
+						// 8th byte: Right Wheel Speed
+						rc.RightWheelSpeed = (uint) (sp.ReadByte() | (sp.ReadByte() << 8));
+
+						// 9th byte: Left Wheel Speed
+						rc.LeftWheelSpeed = (uint) (sp.ReadByte() | (sp.ReadByte() << 8));
 
 
 						break;

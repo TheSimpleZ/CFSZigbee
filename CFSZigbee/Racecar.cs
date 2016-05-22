@@ -34,6 +34,8 @@ namespace CFSZigbee
 		private int _frontBrakePressure;
 		private int _rightBrakeTemp;
 		private int _leftBrakeTemp;
+		private uint _rightWheelSpeed;
+		private uint _leftWheelSpeed;
 		public Motor LeftMotor { get; }
 		public Motor RightMotor { get; }
 
@@ -211,6 +213,28 @@ namespace CFSZigbee
 				if (value == _steeringPosition) return;
 				_steeringPosition = value;
 				OnPropertyChanged(nameof(SteeringPosition));
+			}
+		}
+
+		public uint RightWheelSpeed
+		{
+			get { return _rightWheelSpeed; }
+			set
+			{
+				if (value == _rightWheelSpeed) return;
+				_rightWheelSpeed = value;
+				OnPropertyChanged(nameof(RightWheelSpeed));
+			}
+		}
+
+		public uint LeftWheelSpeed
+		{
+			get { return _leftWheelSpeed; }
+			set
+			{
+				if (value == _leftWheelSpeed) return;
+				_leftWheelSpeed = value;
+				OnPropertyChanged(nameof(LeftWheelSpeed));
 			}
 		}
 
