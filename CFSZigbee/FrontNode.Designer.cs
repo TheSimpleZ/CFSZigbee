@@ -44,15 +44,19 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.label16 = new System.Windows.Forms.Label();
+			this.label15 = new System.Windows.Forms.Label();
+			this.label14 = new System.Windows.Forms.Label();
+			this.label13 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.label10 = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
 			this.label12 = new System.Windows.Forms.Label();
-			this.label13 = new System.Windows.Forms.Label();
-			this.label14 = new System.Windows.Forms.Label();
-			this.label15 = new System.Windows.Forms.Label();
-			this.label16 = new System.Windows.Forms.Label();
+			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+			this.label17 = new System.Windows.Forms.Label();
+			this.label18 = new System.Windows.Forms.Label();
+			this.label19 = new System.Windows.Forms.Label();
+			this.label20 = new System.Windows.Forms.Label();
 			this.racecarBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.tableLayoutPanel1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
@@ -176,7 +180,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(3, 32);
+			this.label2.Location = new System.Drawing.Point(3, 17);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(115, 17);
 			this.label2.TabIndex = 17;
@@ -186,7 +190,7 @@
 			// 
 			this.label8.AutoSize = true;
 			this.label8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "ThrottlePosition", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "0"));
-			this.label8.Location = new System.Drawing.Point(156, 32);
+			this.label8.Location = new System.Drawing.Point(156, 17);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(16, 17);
 			this.label8.TabIndex = 18;
@@ -197,6 +201,10 @@
 			this.tableLayoutPanel1.ColumnCount = 2;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.tableLayoutPanel1.Controls.Add(this.label20, 0, 7);
+			this.tableLayoutPanel1.Controls.Add(this.label19, 0, 7);
+			this.tableLayoutPanel1.Controls.Add(this.label18, 0, 6);
+			this.tableLayoutPanel1.Controls.Add(this.label17, 0, 6);
 			this.tableLayoutPanel1.Controls.Add(this.label16, 1, 5);
 			this.tableLayoutPanel1.Controls.Add(this.label15, 1, 4);
 			this.tableLayoutPanel1.Controls.Add(this.label14, 1, 3);
@@ -211,15 +219,93 @@
 			this.tableLayoutPanel1.Controls.Add(this.label12, 0, 5);
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 6;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+			this.tableLayoutPanel1.RowCount = 8;
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(206, 196);
 			this.tableLayoutPanel1.TabIndex = 19;
+			// 
+			// label16
+			// 
+			this.label16.AutoSize = true;
+			this.label16.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "SteeringPosition", true));
+			this.label16.Location = new System.Drawing.Point(156, 85);
+			this.label16.Name = "label16";
+			this.label16.Size = new System.Drawing.Size(16, 17);
+			this.label16.TabIndex = 26;
+			this.label16.Text = "0";
+			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.label15.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "RightBrakeTemp", true));
+			this.label15.Location = new System.Drawing.Point(156, 68);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(16, 17);
+			this.label15.TabIndex = 25;
+			this.label15.Text = "0";
+			// 
+			// label14
+			// 
+			this.label14.AutoSize = true;
+			this.label14.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "LeftBrakeTemp", true));
+			this.label14.Location = new System.Drawing.Point(156, 51);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(16, 17);
+			this.label14.TabIndex = 24;
+			this.label14.Text = "0";
+			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "FrontBrakePressure", true));
+			this.label13.Location = new System.Drawing.Point(156, 34);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(16, 17);
+			this.label13.TabIndex = 23;
+			this.label13.Text = "0";
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(3, 34);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(147, 17);
+			this.label9.TabIndex = 19;
+			this.label9.Text = "Front Brake Pressure:";
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(3, 51);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(117, 17);
+			this.label10.TabIndex = 20;
+			this.label10.Text = "Left Brake Temp:";
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(3, 68);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(126, 17);
+			this.label11.TabIndex = 21;
+			this.label11.Text = "Right Brake Temp:";
+			// 
+			// label12
+			// 
+			this.label12.AutoSize = true;
+			this.label12.Location = new System.Drawing.Point(3, 85);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(119, 17);
+			this.label12.TabIndex = 22;
+			this.label12.Text = "Steering Position:";
 			// 
 			// tableLayoutPanel2
 			// 
@@ -247,81 +333,43 @@
 			this.tableLayoutPanel2.Size = new System.Drawing.Size(261, 156);
 			this.tableLayoutPanel2.TabIndex = 0;
 			// 
-			// label9
+			// label17
 			// 
-			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(3, 64);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(147, 17);
-			this.label9.TabIndex = 19;
-			this.label9.Text = "Front Brake Pressure:";
+			this.label17.AutoSize = true;
+			this.label17.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "RightWheelSpeed", true));
+			this.label17.Location = new System.Drawing.Point(156, 102);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(16, 17);
+			this.label17.TabIndex = 27;
+			this.label17.Text = "0";
 			// 
-			// label10
+			// label18
 			// 
-			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(3, 96);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(117, 17);
-			this.label10.TabIndex = 20;
-			this.label10.Text = "Left Brake Temp:";
+			this.label18.AutoSize = true;
+			this.label18.Location = new System.Drawing.Point(3, 102);
+			this.label18.Name = "label18";
+			this.label18.Size = new System.Drawing.Size(134, 17);
+			this.label18.TabIndex = 28;
+			this.label18.Text = "Right Wheel Speed:";
 			// 
-			// label11
+			// label19
 			// 
-			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(3, 128);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(126, 17);
-			this.label11.TabIndex = 21;
-			this.label11.Text = "Right Brake Temp:";
+			this.label19.AutoSize = true;
+			this.label19.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "LeftWheelSpeed", true));
+			this.label19.Location = new System.Drawing.Point(156, 119);
+			this.label19.Name = "label19";
+			this.label19.Size = new System.Drawing.Size(16, 17);
+			this.label19.TabIndex = 29;
+			this.label19.Text = "0";
 			// 
-			// label12
+			// label20
 			// 
-			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(3, 160);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(119, 17);
-			this.label12.TabIndex = 22;
-			this.label12.Text = "Steering Position:";
-			// 
-			// label13
-			// 
-			this.label13.AutoSize = true;
-			this.label13.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "FrontBrakePressure", true));
-			this.label13.Location = new System.Drawing.Point(156, 64);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(16, 17);
-			this.label13.TabIndex = 23;
-			this.label13.Text = "0";
-			// 
-			// label14
-			// 
-			this.label14.AutoSize = true;
-			this.label14.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "LeftBrakeTemp", true));
-			this.label14.Location = new System.Drawing.Point(156, 96);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(16, 17);
-			this.label14.TabIndex = 24;
-			this.label14.Text = "0";
-			// 
-			// label15
-			// 
-			this.label15.AutoSize = true;
-			this.label15.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "RightBrakeTemp", true));
-			this.label15.Location = new System.Drawing.Point(156, 128);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(16, 17);
-			this.label15.TabIndex = 25;
-			this.label15.Text = "0";
-			// 
-			// label16
-			// 
-			this.label16.AutoSize = true;
-			this.label16.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.racecarBindingSource, "SteeringPosition", true));
-			this.label16.Location = new System.Drawing.Point(156, 160);
-			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(16, 17);
-			this.label16.TabIndex = 26;
-			this.label16.Text = "0";
+			this.label20.AutoSize = true;
+			this.label20.Location = new System.Drawing.Point(3, 119);
+			this.label20.Name = "label20";
+			this.label20.Size = new System.Drawing.Size(125, 17);
+			this.label20.TabIndex = 30;
+			this.label20.Text = "Left Wheel Speed:";
 			// 
 			// racecarBindingSource
 			// 
@@ -373,5 +421,9 @@
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Label label12;
+		private System.Windows.Forms.Label label20;
+		private System.Windows.Forms.Label label19;
+		private System.Windows.Forms.Label label18;
+		private System.Windows.Forms.Label label17;
 	}
 }
