@@ -18,7 +18,60 @@ namespace CFSZigbee
 		public RearNode(SerialPort sp)
 		{
 			InitializeComponent();
+			_car.PropertyChanged += CarOnPropertyChanged;
+
 			_xBee = sp;
+		}
+
+		private void CarOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
+		{
+			switch (propertyChangedEventArgs.PropertyName)
+			{
+				case nameof(_car.Rtd):
+					SetLabelText(lblRTD, _car.Rtd.ToString());
+					break;
+
+				case nameof(_car.ThrottlePosition):
+					SetLabelText(lblThrottlePosition, _car.ThrottlePosition.ToString());
+					break;
+
+				case nameof(_car.FrontBrakePressure):
+					SetLabelText(lblFrontBrakePressure, _car.FrontBrakePressure.ToString());
+					break;
+
+				case nameof(_car.LeftBrakeTemp):
+					SetLabelText(lblLeftBrakeTemp, _car.LeftBrakeTemp.ToString());
+					break;
+
+				case nameof(_car.RightBrakeTemp):
+					SetLabelText(lblRightBrakeTemp, _car.RightBrakeTemp.ToString());
+					break;
+
+				case nameof(_car.SteeringPosition):
+					SetLabelText(lblSteeringPos, _car.SteeringPosition.ToString());
+					break;
+
+				case nameof(_car.LeftWheelSpeed):
+					SetLabelText(lblLeftWheelSpeed, _car.LeftWheelSpeed.ToString());
+					break;
+
+				case nameof(_car.ThrottleImplaus):
+					SetLabelText(lblThrottleImplaus, _car.ThrottleImplaus.ToString());
+					break;
+
+				case nameof(_car.Throttle1Fault):
+					SetLabelText(lblThrottle1Fault, _car.Throttle1Fault.ToString());
+					break;
+
+				case nameof(_car.ThrottleBrakeImplaus):
+					SetLabelText(lblThrottleBrakeImplaus, _car.ThrottleBrakeImplaus.ToString());
+					break;
+
+				case nameof(_car.FrontBrakeFault):
+					SetLabelText(lblFrontBrakeFault, _car.FrontBrakeFault.ToString());
+					break;
+			}
+
 		}
 
 		private void RearNode_FormClosing(object sender, FormClosingEventArgs e)
