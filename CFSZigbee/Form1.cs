@@ -130,7 +130,7 @@ namespace CFSZigbee
 						rc.Throttle1Fault				= (error & (1 << 2)) != 0;
 						rc.Throttle2Fault				= (error & (1 << 3)) != 0;
 						rc.ThrottleBrakeImplaus = (error & (1 << 4)) != 0;
-						rc.BrakeFault						= (error & (1 << 5)) != 0;
+						rc.FrontBrakeFault						= (error & (1 << 5)) != 0;
 
 						// Third & 4th byte: Brake temps
 						rc.LeftBrakeTemp = sp.ReadByte();

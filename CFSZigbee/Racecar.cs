@@ -22,7 +22,7 @@ namespace CFSZigbee
 		private bool _throttle1Fault;
 		private bool _throttle2Fault;
 		private bool _throttleBrakeImplaus;
-		private bool _brakeFault;
+		private bool _frontBrakeFault;
 
 
 		private bool _rtd;
@@ -67,6 +67,7 @@ namespace CFSZigbee
 				OnPropertyChanged(nameof(ThrottlePosition));
 			}
 		}
+
 
 		public int RadiatorFanDutyCycle
 		{
@@ -159,16 +160,16 @@ namespace CFSZigbee
 			}
 		}
 
-		public bool BrakeFault
+		public bool FrontBrakeFault
 		{
-			get { return _brakeFault; }
+			get { return _frontBrakeFault; }
 			set
 			{
-				if (Equals(_brakeFault, value))
+				if (Equals(_frontBrakeFault, value))
 					return;
 
-				_brakeFault = value;
-				OnPropertyChanged(nameof(BrakeFault));
+				_frontBrakeFault = value;
+				OnPropertyChanged(nameof(FrontBrakeFault));
 			}
 		}
 
