@@ -27,51 +27,63 @@ namespace CFSZigbee
 		{
 			switch (propertyChangedEventArgs.PropertyName)
 			{
-				case nameof(_car.Rtd):
-					SetLabelText(lblRTD, _car.Rtd.ToString());
+				case nameof(_car.ShutdownCurrent):
+					SetLabelText(lblShutdownCurrent, _car.ShutdownCurrent?"ON":"OFF");
 					break;
 
-				case nameof(_car.ThrottlePosition):
-					SetLabelText(lblThrottlePosition, _car.ThrottlePosition.ToString());
+				case nameof(_car.LeftSpringTravel):
+					SetLabelText(lblLeftSpring, _car.LeftSpringTravel.ToString());
 					break;
 
-				case nameof(_car.FrontBrakePressure):
-					SetLabelText(lblFrontBrakePressure, _car.FrontBrakePressure.ToString());
+				case nameof(_car.RightSpringTravel):
+					SetLabelText(lblRightSpring, _car.RightSpringTravel.ToString());
 					break;
 
-				case nameof(_car.LeftBrakeTemp):
-					SetLabelText(lblLeftBrakeTemp, _car.LeftBrakeTemp.ToString());
+				case nameof(_car.WaterTempIn):
+					SetLabelText(lblWaterIn, _car.WaterTempIn.ToString());
 					break;
 
-				case nameof(_car.RightBrakeTemp):
-					SetLabelText(lblRightBrakeTemp, _car.RightBrakeTemp.ToString());
+				case nameof(_car.WaterTempOut):
+					SetLabelText(lblWaterOut, _car.WaterTempOut.ToString());
 					break;
 
-				case nameof(_car.SteeringPosition):
-					SetLabelText(lblSteeringPos, _car.SteeringPosition.ToString());
+				case nameof(_car.X):
+					SetLabelText(lblX, _car.X.ToString());
 					break;
 
-				case nameof(_car.LeftWheelSpeed):
-					SetLabelText(lblLeftWheelSpeed, _car.LeftWheelSpeed.ToString());
+				case nameof(_car.Y):
+					SetLabelText(lblY, _car.Y.ToString());
 					break;
 
-				case nameof(_car.ThrottleImplaus):
-					SetLabelText(lblThrottleImplaus, _car.ThrottleImplaus.ToString());
+				case nameof(_car.Z):
+					SetLabelText(lblZ, _car.Z.ToString());
 					break;
 
-				case nameof(_car.Throttle1Fault):
-					SetLabelText(lblThrottle1Fault, _car.Throttle1Fault.ToString());
+				case nameof(_car.Xrot):
+					SetLabelText(lblXrot, _car.Xrot.ToString());
 					break;
 
-				case nameof(_car.ThrottleBrakeImplaus):
-					SetLabelText(lblThrottleBrakeImplaus, _car.ThrottleBrakeImplaus.ToString());
+				case nameof(_car.Yrot):
+					SetLabelText(lblYrot, _car.Yrot.ToString());
 					break;
 
-				case nameof(_car.FrontBrakeFault):
-					SetLabelText(lblFrontBrakeFault, _car.FrontBrakeFault.ToString());
+				case nameof(_car.Zrot):
+					SetLabelText(lblZrot, _car.Zrot.ToString());
+					break;
+
+				case nameof(_car.AmbientTemp):
+					SetLabelText(lblAmbientTemp, _car.AmbientTemp.ToString());
 					break;
 			}
 
+		}
+
+		private static void SetLabelText(Control l, string text)
+		{
+			if (l.InvokeRequired)
+				l.Invoke(new MethodInvoker(delegate { l.Text = text; }));
+			else
+				l.Text = text;
 		}
 
 		private void RearNode_FormClosing(object sender, FormClosingEventArgs e)
