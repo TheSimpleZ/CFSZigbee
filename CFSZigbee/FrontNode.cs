@@ -67,6 +67,10 @@ namespace CFSZigbee
 					SetLabelText(lblThrottle1Fault, _car.Throttle1Fault.ToString());
 					break;
 
+				case nameof(_car.Throttle2Fault):
+					SetLabelText(lblThrottle2Fault, _car.Throttle2Fault.ToString());
+					break;
+
 				case nameof(_car.ThrottleBrakeImplaus):
 					SetLabelText(lblThrottleBrakeImplaus, _car.ThrottleBrakeImplaus.ToString());
 					break;
