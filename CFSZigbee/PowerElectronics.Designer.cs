@@ -1127,7 +1127,7 @@
 			this.Controls.Add(this.groupBox9);
 			this.Controls.Add(this.groupBox8);
 			this.Name = "PowerElectronics";
-			this.Text = "PowerElectronics";
+			this.Text = "lre";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PowerElectronics_FormClosing);
 			this.VisibleChanged += new System.EventHandler(this.PowerElectronics_VisibleChanged);
 			this.groupBox9.ResumeLayout(false);

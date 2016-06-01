@@ -9,7 +9,7 @@ namespace CFSZigbee
 		private byte _setBits, _statusBits;
 		private ushort _errors;
 
-		
+
 		private int _estSpeed;
 		private int _estTorque;
 		private uint _inverterTemp;
@@ -19,6 +19,11 @@ namespace CFSZigbee
 		private int _reqTorque;
 		private uint _supplyVoltage;
 		private uint _estPower;
+
+		public Motor(string name)
+		{
+			Name = name;
+		}
 
 		private static bool IsBitSet(byte val, int pos)
 		{
@@ -68,7 +73,7 @@ namespace CFSZigbee
 
 				Setbit(ref _setBits, 2, value);
 
-				OnPropertyChanged(nameof(ReqPwm));
+				OnPropertyChanged(Name + "." + nameof(ReqPwm));
 			}
 		}
 
@@ -82,7 +87,7 @@ namespace CFSZigbee
 
 				Setbit(ref _setBits, 4, value);
 
-				OnPropertyChanged(nameof(ReqSpeedController));
+				OnPropertyChanged(Name + "." + nameof(ReqSpeedController));
 			}
 		}
 
@@ -96,7 +101,7 @@ namespace CFSZigbee
 
 				Setbit(ref _statusBits, 3, value);
 
-				OnPropertyChanged(nameof(EstPwm));
+				OnPropertyChanged(Name + "." + nameof(EstPwm));
 			}
 		}
 
@@ -110,7 +115,7 @@ namespace CFSZigbee
 
 				Setbit(ref _statusBits, 5, value);
 
-				OnPropertyChanged(nameof(EstSpeedController));
+				OnPropertyChanged(Name + "." + nameof(EstSpeedController));
 			}
 		}
 
@@ -121,7 +126,7 @@ namespace CFSZigbee
 			{
 				if (value == _estPower) return;
 				_estPower = value;
-				OnPropertyChanged(nameof(EstPower));
+				OnPropertyChanged(Name + "." + nameof(EstPower));
 			}
 		}
 
@@ -132,7 +137,7 @@ namespace CFSZigbee
 			{
 				if (value == _estSpeed) return;
 				_estSpeed = value;
-				OnPropertyChanged(nameof(EstSpeed));
+				OnPropertyChanged(Name + "." + nameof(EstSpeed));
 			}
 		}
 
@@ -143,7 +148,7 @@ namespace CFSZigbee
 			{
 				if (value == _estTorque) return;
 				_estTorque = value;
-				OnPropertyChanged(nameof(EstTorque));
+				OnPropertyChanged(Name + "." + nameof(EstTorque));
 			}
 		}
 
@@ -154,7 +159,7 @@ namespace CFSZigbee
 			{
 				if (value == _inverterTemp) return;
 				_inverterTemp = value;
-				OnPropertyChanged(nameof(InverterTemp));
+				OnPropertyChanged(Name + "." + nameof(InverterTemp));
 			}
 		}
 
@@ -165,7 +170,7 @@ namespace CFSZigbee
 			{
 				if (value == _motorCurrent) return;
 				_motorCurrent = value;
-				OnPropertyChanged(nameof(MotorCurrent));
+				OnPropertyChanged(Name + "." + nameof(MotorCurrent));
 			}
 		}
 
@@ -176,7 +181,7 @@ namespace CFSZigbee
 			{
 				if (value == _motorTemp) return;
 				_motorTemp = value;
-				OnPropertyChanged(nameof(MotorTemp));
+				OnPropertyChanged(Name + "." + nameof(MotorTemp));
 			}
 		}
 
@@ -187,7 +192,7 @@ namespace CFSZigbee
 			{
 				if (value == _reqSpeed) return;
 				_reqSpeed = value;
-				OnPropertyChanged(nameof(ReqSpeed));
+				OnPropertyChanged(Name + "." + nameof(ReqSpeed));
 			}
 		}
 
@@ -198,7 +203,7 @@ namespace CFSZigbee
 			{
 				if (value == _reqTorque) return;
 				_reqTorque = value;
-				OnPropertyChanged(nameof(ReqTorque));
+				OnPropertyChanged(Name + "." + nameof(ReqTorque));
 			}
 		}
 
@@ -209,7 +214,7 @@ namespace CFSZigbee
 			{
 				if (value == _supplyVoltage) return;
 				_supplyVoltage = value;
-				OnPropertyChanged(nameof(SupplyVoltage));
+				OnPropertyChanged(Name + "." + nameof(SupplyVoltage));
 			}
 		}
 
@@ -223,7 +228,7 @@ namespace CFSZigbee
 
 				Setbit(ref _errors, 0, value);
 
-				OnPropertyChanged(nameof(OverCurrent));
+				OnPropertyChanged(Name + "." + nameof(OverCurrent));
 			}
 		}
 
@@ -236,7 +241,7 @@ namespace CFSZigbee
 					return;
 
 				Setbit(ref _errors, 1, value);
-				OnPropertyChanged(nameof(HighUdc));
+				OnPropertyChanged(Name + "." + nameof(HighUdc));
 			}
 		}
 
@@ -249,7 +254,7 @@ namespace CFSZigbee
 					return;
 
 				Setbit(ref _errors, 2, value);
-				OnPropertyChanged(nameof(LowUdc));
+				OnPropertyChanged(Name + "." + nameof(LowUdc));
 			}
 		}
 
@@ -262,7 +267,7 @@ namespace CFSZigbee
 					return;
 
 				Setbit(ref _errors, 3, value);
-				OnPropertyChanged(nameof(EmergencyStop));
+				OnPropertyChanged(Name + "." + nameof(EmergencyStop));
 			}
 		}
 
@@ -275,7 +280,7 @@ namespace CFSZigbee
 					return;
 
 				Setbit(ref _errors, 4, value);
-				OnPropertyChanged(nameof(MotorOverTemp));
+				OnPropertyChanged(Name + "." + nameof(MotorOverTemp));
 			}
 		}
 
@@ -288,7 +293,7 @@ namespace CFSZigbee
 					return;
 
 				Setbit(ref _errors, 5, value);
-				OnPropertyChanged(nameof(InverterOverTemp));
+				OnPropertyChanged(Name + "." + nameof(InverterOverTemp));
 			}
 		}
 
@@ -301,7 +306,7 @@ namespace CFSZigbee
 					return;
 
 				Setbit(ref _errors, 6, value);
-				OnPropertyChanged(nameof(MotorOverload));
+				OnPropertyChanged(Name + "." + nameof(MotorOverload));
 			}
 		}
 
@@ -314,7 +319,7 @@ namespace CFSZigbee
 					return;
 
 				Setbit(ref _errors, 7, value);
-				OnPropertyChanged(nameof(SensorFault));
+				OnPropertyChanged(Name + "." + nameof(SensorFault));
 			}
 		}
 
@@ -327,7 +332,7 @@ namespace CFSZigbee
 					return;
 
 				Setbit(ref _errors, 8, value);
-				OnPropertyChanged(nameof(CommunicationFault));
+				OnPropertyChanged(Name + "." + nameof(CommunicationFault));
 			}
 		}
 
@@ -340,27 +345,60 @@ namespace CFSZigbee
 					return;
 
 				Setbit(ref _errors, 9, value);
-				OnPropertyChanged(nameof(OverSpeed));
+				OnPropertyChanged(Name + "." + nameof(OverSpeed));
 			}
 		}
 
 		public byte SetBits
 		{
 			get { return _setBits; }
-			set { _setBits = value; }
+			set
+			{
+				if (_setBits == value)
+					return;
+				_setBits = value;
+				OnPropertyChanged(Name + "." + nameof(ReqPwm));
+				OnPropertyChanged(Name + "." + nameof(ReqSpeedController));
+			}
 		}
 
 		public byte StatusBits
 		{
 			get { return _statusBits; }
-			set { _statusBits = value; }
+			set
+			{
+				if(_statusBits == value)
+					return;
+
+				_statusBits = value;
+				OnPropertyChanged(Name + "." + nameof(EstPwm));
+				OnPropertyChanged(Name + "." + nameof(EstSpeedController));
+			}
 		}
 
 		public ushort Errors
 		{
 			get { return _errors; }
-			set { _errors = value; }
+			set
+			{
+				if (_errors == value)
+					return;
+
+				_errors = value;
+				OnPropertyChanged(Name + "." + nameof(OverCurrent));
+				OnPropertyChanged(Name + "." + nameof(HighUdc));
+				OnPropertyChanged(Name + "." + nameof(LowUdc));
+				OnPropertyChanged(Name + "." + nameof(EmergencyStop));
+				OnPropertyChanged(Name + "." + nameof(InverterOverTemp));
+				OnPropertyChanged(Name + "." + nameof(MotorOverTemp));
+				OnPropertyChanged(Name + "." + nameof(MotorOverload));
+				OnPropertyChanged(Name + "." + nameof(SensorFault));
+				OnPropertyChanged(Name + "." + nameof(CommunicationFault));
+				OnPropertyChanged(Name + "." + nameof(OverSpeed));
+			}
 		}
+
+		public string Name { get; }
 
 
 		public event PropertyChangedEventHandler PropertyChanged;

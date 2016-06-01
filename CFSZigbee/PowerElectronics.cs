@@ -21,57 +21,217 @@ namespace CFSZigbee
 
 		private void CarOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
 		{
-			switch (propertyChangedEventArgs.PropertyName)
+			string[] propName = propertyChangedEventArgs.PropertyName.Split('.');
+
+			if (propName.Length == 0) return;
+
+			if (propName[0] == _car.RightMotor.Name)
 			{
-				case nameof(_car.Rtd):
-					SetLabelText(lblRTD, _car.Rtd.ToString());
-					break;
+				switch (propName[1])
+				{
+					#region Right Motor
+					case nameof(_car.RightMotor.ReqTorque):
+						SetLabelText(RReqTorque, _car.RightMotor.ReqTorque.ToString());
+						break;
 
-				case nameof(_car.ThrottlePosition):
-					SetLabelText(lblThrottlePosition, _car.ThrottlePosition.ToString());
-					break;
+					case nameof(_car.RightMotor.ReqPwm):
+						SetLabelText(RReqPWM, _car.RightMotor.ReqPwm.ToString());
+						break;
 
-				case nameof(_car.FrontBrakePressure):
-					SetLabelText(lblFrontBrakePressure, _car.FrontBrakePressure.ToString());
-					break;
+					case nameof(_car.RightMotor.ReqSpeed):
+						SetLabelText(RReqSpeed, _car.RightMotor.ReqSpeed.ToString());
+						break;
 
-				case nameof(_car.LeftBrakeTemp):
-					SetLabelText(lblLeftBrakeTemp, _car.LeftBrakeTemp.ToString());
-					break;
+					case nameof(_car.RightMotor.ReqSpeedController):
+						SetLabelText(RReqSC, _car.RightMotor.ReqSpeedController.ToString());
+						break;
 
-				case nameof(_car.RightBrakeTemp):
-					SetLabelText(lblRightBrakeTemp, _car.RightBrakeTemp.ToString());
-					break;
+					case nameof(_car.RightMotor.EstTorque):
+						SetLabelText(REstTorque, _car.RightMotor.EstTorque.ToString());
+						break;
 
-				case nameof(_car.SteeringPosition):
-					SetLabelText(lblSteeringPos, _car.SteeringPosition.ToString());
-					break;
+					case nameof(_car.RightMotor.EstSpeed):
+						SetLabelText(REstSpeed, _car.RightMotor.EstSpeed.ToString());
+						break;
 
-				case nameof(_car.LeftWheelSpeed):
-					SetLabelText(lblLeftWheelSpeed, _car.LeftWheelSpeed.ToString());
-					break;
+					case nameof(_car.RightMotor.EstPower):
+						SetLabelText(RPower, _car.RightMotor.EstPower.ToString());
+						break;
 
-				case nameof(_car.ThrottleImplaus):
-					SetLabelText(lblThrottleImplaus, _car.ThrottleImplaus.ToString());
-					break;
+					case nameof(_car.RightMotor.SupplyVoltage):
+						SetLabelText(RVoltage, _car.RightMotor.SupplyVoltage.ToString());
+						break;
 
-				case nameof(_car.Throttle1Fault):
-					SetLabelText(lblThrottle1Fault, _car.Throttle1Fault.ToString());
-					break;
+					case nameof(_car.RightMotor.MotorTemp):
+						SetLabelText(RMotorTemp, _car.RightMotor.MotorTemp.ToString());
+						break;
 
-				case nameof(_car.Throttle2Fault):
-					SetLabelText(lblThrottle2Fault, _car.Throttle2Fault.ToString());
-					break;
+					case nameof(_car.RightMotor.InverterTemp):
+						SetLabelText(RInvTemp, _car.RightMotor.InverterTemp.ToString());
+						break;
 
-				case nameof(_car.ThrottleBrakeImplaus):
-					SetLabelText(lblThrottleBrakeImplaus, _car.ThrottleBrakeImplaus.ToString());
-					break;
+					case nameof(_car.RightMotor.MotorCurrent):
+						SetLabelText(RCurrent, _car.RightMotor.MotorCurrent.ToString());
+						break;
 
-				case nameof(_car.FrontBrakeFault):
-					SetLabelText(lblFrontBrakeFault, _car.FrontBrakeFault.ToString());
-					break;
+					case nameof(_car.RightMotor.EstPwm):
+						SetLabelText(REstPWM, _car.RightMotor.EstPwm.ToString());
+						break;
+
+					case nameof(_car.RightMotor.EstSpeedController):
+						SetLabelText(REstSC, _car.RightMotor.EstSpeedController.ToString());
+						break;
+
+					case nameof(_car.RightMotor.OverCurrent):
+						SetLabelText(ROvercurrent, _car.RightMotor.OverCurrent.ToString());
+						break;
+					case nameof(_car.RightMotor.HighUdc):
+						SetLabelText(RHUdc, _car.RightMotor.HighUdc.ToString());
+						break;
+
+					case nameof(_car.RightMotor.LowUdc):
+						SetLabelText(RLUdc, _car.RightMotor.LowUdc.ToString());
+						break;
+
+					case nameof(_car.RightMotor.EmergencyStop):
+						SetLabelText(REmergency, _car.RightMotor.EmergencyStop.ToString());
+						break;
+
+					case nameof(_car.RightMotor.InverterOverTemp):
+						SetLabelText(RInvOvertemp, _car.RightMotor.InverterOverTemp.ToString());
+						break;
+
+					case nameof(_car.RightMotor.MotorOverTemp):
+						SetLabelText(RMotorOvertemp, _car.RightMotor.MotorOverTemp.ToString());
+						break;
+
+					case nameof(_car.RightMotor.MotorOverload):
+						SetLabelText(RMotorOverload, _car.RightMotor.MotorOverload.ToString());
+						break;
+
+					case nameof(_car.RightMotor.SensorFault):
+						SetLabelText(RSensorFault, _car.RightMotor.SensorFault.ToString());
+						break;
+
+					case nameof(_car.RightMotor.CommunicationFault):
+						SetLabelText(RCommFault, _car.RightMotor.CommunicationFault.ToString());
+						break;
+
+					case nameof(_car.RightMotor.OverSpeed):
+						SetLabelText(RMotorOverspeed, _car.RightMotor.OverSpeed.ToString());
+						break;
+
+						#endregion Right Motor
+				}
 			}
+			else
+			{
+				switch (propName[1])
+				{
+					#region Left Motor
+					case nameof(_car.LeftMotor.ReqTorque):
+						SetLabelText(LReqTorque, _car.LeftMotor.ReqTorque.ToString());
+						break;
 
+					case nameof(_car.LeftMotor.ReqPwm):
+						SetLabelText(LReqPWM, _car.LeftMotor.ReqPwm.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.ReqSpeed):
+						SetLabelText(LReqSpeed, _car.LeftMotor.ReqSpeed.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.ReqSpeedController):
+						SetLabelText(LReqSC, _car.LeftMotor.ReqSpeedController.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.EstTorque):
+						SetLabelText(LEstTorque, _car.LeftMotor.EstTorque.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.EstSpeed):
+						SetLabelText(LEstSpeed, _car.LeftMotor.EstSpeed.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.EstPower):
+						SetLabelText(LPower, _car.LeftMotor.EstPower.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.SupplyVoltage):
+						SetLabelText(LVoltage, _car.LeftMotor.SupplyVoltage.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.MotorTemp):
+						SetLabelText(LMotorTemp, _car.LeftMotor.MotorTemp.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.InverterTemp):
+						SetLabelText(LInvTemp, _car.LeftMotor.InverterTemp.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.MotorCurrent):
+						SetLabelText(LCurrent, _car.LeftMotor.MotorCurrent.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.EstPwm):
+						SetLabelText(LEstPWM, _car.LeftMotor.EstPwm.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.EstSpeedController):
+						SetLabelText(LEstSC, _car.LeftMotor.EstSpeedController.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.OverCurrent):
+						SetLabelText(LOvercurrent, _car.LeftMotor.OverCurrent.ToString());
+						break;
+					case nameof(_car.LeftMotor.HighUdc):
+						SetLabelText(LHUdc, _car.LeftMotor.HighUdc.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.LowUdc):
+						SetLabelText(LLUdc, _car.LeftMotor.LowUdc.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.EmergencyStop):
+						SetLabelText(LEmergency, _car.LeftMotor.EmergencyStop.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.InverterOverTemp):
+						SetLabelText(LInvOvertemp, _car.LeftMotor.InverterOverTemp.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.MotorOverTemp):
+						SetLabelText(LMotorOvertemp, _car.LeftMotor.MotorOverTemp.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.MotorOverload):
+						SetLabelText(LMotorOverload, _car.LeftMotor.MotorOverload.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.SensorFault):
+						SetLabelText(LSensorFault, _car.LeftMotor.SensorFault.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.CommunicationFault):
+						SetLabelText(LCommFault, _car.LeftMotor.CommunicationFault.ToString());
+						break;
+
+					case nameof(_car.LeftMotor.OverSpeed):
+						SetLabelText(LMotorOverspeed, _car.LeftMotor.OverSpeed.ToString());
+						break;
+
+						#endregion Left Motor
+				}
+			}
+			
+		}
+
+		private static void SetLabelText(Control l, string text)
+		{
+			if (l.InvokeRequired)
+				l.Invoke(new MethodInvoker(delegate { l.Text = text; }));
+			else
+				l.Text = text;
 		}
 
 		private readonly byte[] _poll = { 0x7C, 0x7C, 0x01, 0x04, 0x04 }; // Poll for front node data

@@ -13,8 +13,8 @@ namespace CFSZigbee
 
 		private Racecar()
 		{
-			RightMotor = new Motor();
-			LeftMotor = new Motor();
+			RightMotor = new Motor("RightMotor");
+			LeftMotor = new Motor("LeftMotor");
 		}
 
 		// Errors.
