@@ -10,12 +10,14 @@ namespace CFSZigbee
 		readonly Thread _childThread;
 		private readonly FrontNode _fn;
 		private readonly RearNode _rn;
+		private readonly RearNode _pe;
 
 		public Form1()
 		{
 			InitializeComponent();
 			_fn = new FrontNode(xBee);
 			_rn = new RearNode(xBee);
+			_pe = new RearNode(xBee);
 			ThreadStart childref = () => ReadSerial(xBee);
 			_childThread = new Thread(childref);
 		}
@@ -72,9 +74,11 @@ namespace CFSZigbee
 			}
 			_fn.Close();
 			_rn.Close();
+			_pe.Close();
 
 			_fn.Dispose();
 			_rn.Dispose();
+			_pe.Dispose();
 		}
 
 		
@@ -235,6 +239,11 @@ namespace CFSZigbee
 			}
 
 			return false;
+		}
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+			_pe.Show();
 		}
 	}
 }
