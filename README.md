@@ -1,3 +1,3 @@
 # CFSZigbee
 
-Software used to monitor the CFS '16 car values.
+Software used to monitor the CFS '16 car properties.
