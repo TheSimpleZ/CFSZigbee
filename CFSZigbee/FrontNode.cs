@@ -55,6 +55,10 @@ namespace CFSZigbee
 					SetLabelText(lblSteeringPos, _car.SteeringPosition.ToString());
 					break;
 
+				case nameof(_car.RightWheelSpeed):
+					SetLabelText(lblRightWheelSpeed, _car.RightWheelSpeed.ToString());
+					break;
+
 				case nameof(_car.LeftWheelSpeed):
 					SetLabelText(lblLeftWheelSpeed, _car.LeftWheelSpeed.ToString());
 					break;
