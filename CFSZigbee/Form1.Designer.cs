@@ -32,7 +32,7 @@
 			this.xBee = new System.IO.Ports.SerialPort(this.components);
 			this.cbComPorts = new System.Windows.Forms.ComboBox();
 			this.btnRefresh = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
+			this.btnBattery = new System.Windows.Forms.Button();
 			this.btnOpen = new System.Windows.Forms.Button();
 			this.btnFrontNode = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
@@ -61,14 +61,15 @@
 			this.btnRefresh.UseVisualStyleBackColor = true;
 			this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
 			// 
-			// button2
+			// btnBattery
 			// 
-			this.button2.Location = new System.Drawing.Point(71, 272);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(100, 50);
-			this.button2.TabIndex = 14;
-			this.button2.Text = "Battery";
-			this.button2.UseVisualStyleBackColor = true;
+			this.btnBattery.Location = new System.Drawing.Point(71, 272);
+			this.btnBattery.Name = "btnBattery";
+			this.btnBattery.Size = new System.Drawing.Size(100, 50);
+			this.btnBattery.TabIndex = 14;
+			this.btnBattery.Text = "Battery";
+			this.btnBattery.UseVisualStyleBackColor = true;
+			this.btnBattery.Click += new System.EventHandler(this.btnBattery_Click);
 			// 
 			// btnOpen
 			// 
@@ -117,7 +118,7 @@
 			this.Controls.Add(this.btnRearNode);
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.btnFrontNode);
-			this.Controls.Add(this.button2);
+			this.Controls.Add(this.btnBattery);
 			this.Controls.Add(this.btnOpen);
 			this.Controls.Add(this.btnRefresh);
 			this.Controls.Add(this.cbComPorts);
@@ -134,7 +135,7 @@
 		private System.IO.Ports.SerialPort xBee;
 		private System.Windows.Forms.ComboBox cbComPorts;
 		private System.Windows.Forms.Button btnRefresh;
-		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button btnBattery;
 		private System.Windows.Forms.Button btnOpen;
 		private System.Windows.Forms.Button btnFrontNode;
 		private System.Windows.Forms.Button button4;

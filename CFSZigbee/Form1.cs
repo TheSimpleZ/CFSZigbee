@@ -10,12 +10,14 @@ namespace CFSZigbee
 		readonly Thread _childThread;
 		private readonly FrontNode _fn;
 		private readonly RearNode _rn;
+		private readonly Battery _battery;
 
 		public Form1()
 		{
 			InitializeComponent();
 			_fn = new FrontNode(xBee);
 			_rn = new RearNode(xBee);
+			_battery = new Battery(xBee);
 			ThreadStart childref = () => ReadSerial(xBee);
 			_childThread = new Thread(childref);
 		}
@@ -55,12 +57,9 @@ namespace CFSZigbee
 		}
 
 
-		readonly byte[] _stopPoll = { 0x7A, 0x7A, 0x00, 0x04, 0x04, 0x7B, 0x7B, 0x00, 0x04, 0x04 }; // Stop polling for all nodes
+		readonly byte[] _stopPoll = { 0x7A, 0x7A, 0x00, 0x04, 0x04, 0x7B, 0x7B, 0x00, 0x04, 0x04, 0x7D, 0x7D, 0x00, 0x04, 0x04 }; // Stop polling for all nodes
 		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
 		{
-
-
-
 			if(_childThread.IsAlive)
 				_childThread.Abort();
 
@@ -68,13 +67,16 @@ namespace CFSZigbee
 			{
 				xBee.Write(_stopPoll, 0, 5);
 				xBee.Write(_stopPoll, 5, 5);
+				xBee.Write(_stopPoll, 10, 5);
 				xBee.Close();
 			}
 			_fn.Close();
 			_rn.Close();
+			_battery.Close();
 
 			_fn.Dispose();
 			_rn.Dispose();
+			_battery.Dispose();
 		}
 
 		
@@ -86,6 +88,11 @@ namespace CFSZigbee
 		private void btnRearNode_Click(object sender, EventArgs e)
 		{
 			_rn.Show();
+		}
+
+		private void btnBattery_Click(object sender, EventArgs e)
+		{
+			_battery.Show();
 		}
 
 		// Read serial data from zigbee in different thread
@@ -158,6 +165,11 @@ namespace CFSZigbee
 						rc.ShutdownCurrent = sp.ReadByte() != 0;
 						rc.ThrottlePosition = sp.ReadByte() | (sp.ReadByte() << 8);
 						break;
+
+					case 4:
+						rc.BatteryTemp = sp.ReadByte();
+						rc.BatteryVoltage = sp.ReadByte() | (sp.ReadByte() << 8);
+						break;
 				}
 
 				//Remove terminators
@@ -176,5 +188,7 @@ namespace CFSZigbee
 
 			return false;
 		}
+
+
 	}
 }

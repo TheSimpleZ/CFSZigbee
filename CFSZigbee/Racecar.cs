@@ -36,6 +36,8 @@ namespace CFSZigbee
 		private int _leftBrakeTemp;
 		private uint _rightWheelSpeed;
 		private uint _leftWheelSpeed;
+		private int _batteryTemp;
+		private int _batteryVoltage;
 		public Motor LeftMotor { get; }
 		public Motor RightMotor { get; }
 
@@ -236,6 +238,28 @@ namespace CFSZigbee
 				if (value == _leftWheelSpeed) return;
 				_leftWheelSpeed = value;
 				OnPropertyChanged(nameof(LeftWheelSpeed));
+			}
+		}
+
+		public int BatteryTemp
+		{
+			get { return _batteryTemp; }
+			set
+			{
+				if (value == _batteryTemp) return;
+				_batteryTemp = value;
+				OnPropertyChanged(nameof(BatteryTemp));
+			}
+		}
+
+		public int BatteryVoltage
+		{
+			get { return _batteryVoltage; }
+			set
+			{
+				if (value == _batteryVoltage) return;
+				_batteryVoltage = value;
+				OnPropertyChanged(nameof(BatteryVoltage));
 			}
 		}
 
