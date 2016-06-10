@@ -166,9 +166,9 @@ namespace CFSZigbee
 						rc.ThrottlePosition = sp.ReadByte() | (sp.ReadByte() << 8);
 						break;
 
-					case 4:
+					case 4: // Battery
 						rc.BatteryTemp = sp.ReadByte();
-						rc.BatteryVoltage = (sp.ReadByte() << 8) | sp.ReadByte();
+						rc.BatteryVoltage = sp.ReadByte() | (sp.ReadByte() << 8);
 						break;
 				}
 
