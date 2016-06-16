@@ -15,7 +15,9 @@ namespace CFSZigbee
 
 			_xBee = sp;
 
-			_car.PropertyChanged += CarOnPropertyChanged;
+			var carListener = ChangeListener.Create(_car);
+
+			carListener.PropertyChanged += CarOnPropertyChanged;
 
 		}
 
@@ -25,7 +27,7 @@ namespace CFSZigbee
 
 			if (propName.Length == 0) return;
 
-			if (propName[0] == _car.RightMotor.Name)
+			if (propName[0] == nameof(_car.RightMotor))
 			{
 				switch (propName[1])
 				{

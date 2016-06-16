@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using CFSZigbee.Annotations;
+using CFSZigbee.Properties;
 
 namespace CFSZigbee
 {
@@ -13,8 +14,8 @@ namespace CFSZigbee
 
 		private Racecar()
 		{
-			RightMotor = new Motor("RightMotor");
-			LeftMotor = new Motor("LeftMotor");
+			RightMotor = new Motor();
+			LeftMotor = new Motor();
 		}
 
 		// Errors.
