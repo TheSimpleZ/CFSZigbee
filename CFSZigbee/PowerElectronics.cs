@@ -37,7 +37,7 @@ namespace CFSZigbee
 						break;
 
 					case nameof(_car.RightMotor.ReqPwm):
-						SetLabelText(RReqPWM, _car.RightMotor.ReqPwm.ToString());
+						SetLabelText(RReqPWM, _car.RightMotor.ReqPwm ? "On" : "Off");
 						break;
 
 					case nameof(_car.RightMotor.ReqSpeed):
@@ -45,7 +45,7 @@ namespace CFSZigbee
 						break;
 
 					case nameof(_car.RightMotor.ReqSpeedController):
-						SetLabelText(RReqSC, _car.RightMotor.ReqSpeedController.ToString());
+						SetLabelText(RReqSC, _car.RightMotor.ReqSpeedController ? "On" : "Off");
 						break;
 
 					case nameof(_car.RightMotor.EstTorque):
@@ -77,11 +77,11 @@ namespace CFSZigbee
 						break;
 
 					case nameof(_car.RightMotor.EstPwm):
-						SetLabelText(REstPWM, _car.RightMotor.EstPwm.ToString());
+						SetLabelText(REstPWM, _car.RightMotor.EstPwm?"On":"Off");
 						break;
 
 					case nameof(_car.RightMotor.EstSpeedController):
-						SetLabelText(REstSC, _car.RightMotor.EstSpeedController.ToString());
+						SetLabelText(REstSC, _car.RightMotor.EstSpeedController?"On":"Off");
 						break;
 
 					case nameof(_car.RightMotor.OverCurrent):
@@ -136,7 +136,7 @@ namespace CFSZigbee
 						break;
 
 					case nameof(_car.LeftMotor.ReqPwm):
-						SetLabelText(LReqPWM, _car.LeftMotor.ReqPwm.ToString());
+						SetLabelText(LReqPWM, _car.LeftMotor.ReqPwm ? "On" : "Off");
 						break;
 
 					case nameof(_car.LeftMotor.ReqSpeed):
@@ -144,7 +144,7 @@ namespace CFSZigbee
 						break;
 
 					case nameof(_car.LeftMotor.ReqSpeedController):
-						SetLabelText(LReqSC, _car.LeftMotor.ReqSpeedController.ToString());
+						SetLabelText(LReqSC, _car.LeftMotor.ReqSpeedController ? "On" : "Off");
 						break;
 
 					case nameof(_car.LeftMotor.EstTorque):
@@ -176,11 +176,11 @@ namespace CFSZigbee
 						break;
 
 					case nameof(_car.LeftMotor.EstPwm):
-						SetLabelText(LEstPWM, _car.LeftMotor.EstPwm.ToString());
+						SetLabelText(LEstPWM, _car.LeftMotor.EstPwm ? "On" : "Off");
 						break;
 
 					case nameof(_car.LeftMotor.EstSpeedController):
-						SetLabelText(LEstSC, _car.LeftMotor.EstSpeedController.ToString());
+						SetLabelText(LEstSC, _car.LeftMotor.EstSpeedController ? "On" : "Off");
 						break;
 
 					case nameof(_car.LeftMotor.OverCurrent):
