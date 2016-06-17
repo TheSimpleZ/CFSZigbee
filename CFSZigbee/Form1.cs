@@ -168,7 +168,7 @@ namespace CFSZigbee
 
 					case 5: // Battery
 						rc.BatteryTemp = sp.ReadByte();
-						rc.BatteryVoltage = sp.ReadByte() | (sp.ReadByte() << 8);
+						rc.BatteryVoltage = (sp.ReadByte() | (sp.ReadByte() << 8))/100;
 						break;
 				}
 
