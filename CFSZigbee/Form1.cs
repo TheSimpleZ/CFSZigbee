@@ -168,13 +168,13 @@ namespace CFSZigbee
 
 						// INT16
 						// 11: LReqTorque
-						rc.LeftMotor.ReqTorque = sp.ReadByte() | (sp.ReadByte() << 8);
+						rc.LeftMotor.ReqTorque = (sp.ReadByte() | (sp.ReadByte() << 8))/100;
 
 						// 12: LEstSpeed
-						rc.LeftMotor.EstSpeed = sp.ReadByte() | (sp.ReadByte() << 8);
+						rc.LeftMotor.EstSpeed = (sp.ReadByte() | (sp.ReadByte() << 8))/10;
 
 						// 13: LEstToruq
-						rc.LeftMotor.EstTorque = sp.ReadByte() | (sp.ReadByte() << 8);
+						rc.LeftMotor.EstTorque = (sp.ReadByte() | (sp.ReadByte() << 8))/100;
 
 						// 14: LMotorCurrent
 						rc.LeftMotor.MotorCurrent = sp.ReadByte() | (sp.ReadByte() << 8);
@@ -184,7 +184,7 @@ namespace CFSZigbee
 						rc.LeftMotor.EstPower = (uint)(sp.ReadByte() | (sp.ReadByte() << 8));
 
 						// 19: LVoltage
-						rc.LeftMotor.SupplyVoltage = (uint)(sp.ReadByte() | (sp.ReadByte() << 8));
+						rc.LeftMotor.SupplyVoltage = (uint)(sp.ReadByte() | (sp.ReadByte() << 8))/100;
 
 						// 20: LErrors
 						rc.LeftMotor.Errors = (ushort)(sp.ReadByte() | (sp.ReadByte() << 8));
@@ -204,13 +204,13 @@ namespace CFSZigbee
 
 						// INT16
 						// 7: RReqTorque
-						rc.RightMotor.ReqTorque = sp.ReadByte() | (sp.ReadByte() << 8);
+						rc.RightMotor.ReqTorque = (sp.ReadByte() | (sp.ReadByte() << 8))/100;
 
 						// 8: REstSpeed
-						rc.RightMotor.EstSpeed = sp.ReadByte() | (sp.ReadByte() << 8);
+						rc.RightMotor.EstSpeed = (sp.ReadByte() | (sp.ReadByte() << 8))/10;
 
 						// 9: REstTorque
-						rc.RightMotor.EstTorque = sp.ReadByte() | (sp.ReadByte() << 8);
+						rc.RightMotor.EstTorque = (sp.ReadByte() | (sp.ReadByte() << 8))/100;
 
 						// 10: RMotorCurrent
 						rc.RightMotor.MotorCurrent = sp.ReadByte() | (sp.ReadByte() << 8);
@@ -220,7 +220,7 @@ namespace CFSZigbee
 						rc.RightMotor.EstPower = (uint)(sp.ReadByte() | (sp.ReadByte() << 8));
 
 						// 16: RVoltage
-						rc.RightMotor.SupplyVoltage = (uint)(sp.ReadByte() | (sp.ReadByte() << 8));
+						rc.RightMotor.SupplyVoltage = (uint)(sp.ReadByte() | (sp.ReadByte() << 8))/100;
 
 						// 17: RErrors
 						rc.RightMotor.Errors = (ushort)(sp.ReadByte() | (sp.ReadByte() << 8));
