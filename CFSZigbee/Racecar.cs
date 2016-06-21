@@ -175,7 +175,7 @@ namespace CFSZigbee
 			}
 		}
 
-		public int LeftBrakeTemp
+		public uint LeftBrakeTemp
 		{
 			get { return _leftBrakeTemp; }
 			set
@@ -186,7 +186,7 @@ namespace CFSZigbee
 			}
 		}
 
-		public int RightBrakeTemp
+		public uint RightBrakeTemp
 		{
 			get { return _rightBrakeTemp; }
 			set

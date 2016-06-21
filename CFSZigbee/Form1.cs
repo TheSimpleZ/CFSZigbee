@@ -139,24 +139,24 @@ namespace CFSZigbee
 						rc.ThrottleBrakeImplaus = (error & (1 << 3)) != 0;
 						rc.FrontBrakeFault			= (error & (1 << 4)) != 0;
 
-						// Third & 4th byte: Brake temps
-						rc.LeftBrakeTemp = sp.ReadByte();
-						rc.RightBrakeTemp = sp.ReadByte();
-
-						// 5th byte: Throttle position
+						// 3rd byte: Throttle position
 						rc.ThrottlePosition = sp.ReadByte();
 						
-						// 6th byte: Front Brake Pressure
+						// 4th byte: Front Brake Pressure
 						rc.FrontBrakePressure = sp.ReadByte();
 						
-						// 7th byte: Steering Position
+						// 5th byte: Steering Position
 						rc.SteeringPosition = sp.ReadByte();
 
-						// 8th byte: Right Wheel Speed
+						// 6th byte: Right Wheel Speed
 						rc.RightWheelSpeed = (uint) (sp.ReadByte() | (sp.ReadByte() << 8));
 
-						// 9th byte: Left Wheel Speed
+						// 7th byte: Left Wheel Speed
 						rc.LeftWheelSpeed = (uint) (sp.ReadByte() | (sp.ReadByte() << 8));
+
+						// 8th & 9th byte: Brake temps
+						rc.LeftBrakeTemp = (uint)(sp.ReadByte() | (sp.ReadByte() << 8)) / 10;
+						rc.RightBrakeTemp = (uint)(sp.ReadByte() | (sp.ReadByte() << 8)) / 10;
 
 
 						break;
