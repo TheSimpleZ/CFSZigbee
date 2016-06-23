@@ -32,8 +32,8 @@ namespace CFSZigbee
 		private int _batteryFansDutyCycle;
 		private int _steeringPosition;
 		private int _frontBrakePressure;
-		private int _rightBrakeTemp;
-		private int _leftBrakeTemp;
+		private uint _rightBrakeTemp;
+		private uint _leftBrakeTemp;
 		private uint _rightWheelSpeed;
 		private uint _leftWheelSpeed;
 		private int _batteryTemp;
