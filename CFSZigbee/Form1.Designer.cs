@@ -35,7 +35,7 @@
 			this.btnBattery = new System.Windows.Forms.Button();
 			this.btnOpen = new System.Windows.Forms.Button();
 			this.btnFrontNode = new System.Windows.Forms.Button();
-			this.button4 = new System.Windows.Forms.Button();
+			this.btnPowerElectronics = new System.Windows.Forms.Button();
 			this.btnRearNode = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
@@ -91,14 +91,15 @@
 			this.btnFrontNode.UseVisualStyleBackColor = true;
 			this.btnFrontNode.Click += new System.EventHandler(this.btnFrontNode_Click);
 			// 
-			// button4
+			// btnPowerElectronics
 			// 
-			this.button4.Location = new System.Drawing.Point(71, 205);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(100, 50);
-			this.button4.TabIndex = 16;
-			this.button4.Text = "Power Electronics";
-			this.button4.UseVisualStyleBackColor = true;
+			this.btnPowerElectronics.Location = new System.Drawing.Point(71, 205);
+			this.btnPowerElectronics.Name = "btnPowerElectronics";
+			this.btnPowerElectronics.Size = new System.Drawing.Size(100, 50);
+			this.btnPowerElectronics.TabIndex = 16;
+			this.btnPowerElectronics.Text = "Power Electronics";
+			this.btnPowerElectronics.UseVisualStyleBackColor = true;
+			this.btnPowerElectronics.Click += new System.EventHandler(this.btnPowerElectronics_Click);
 			// 
 			// btnRearNode
 			// 
@@ -116,7 +117,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(259, 429);
 			this.Controls.Add(this.btnRearNode);
-			this.Controls.Add(this.button4);
+			this.Controls.Add(this.btnPowerElectronics);
 			this.Controls.Add(this.btnFrontNode);
 			this.Controls.Add(this.btnBattery);
 			this.Controls.Add(this.btnOpen);
@@ -138,7 +139,7 @@
 		private System.Windows.Forms.Button btnBattery;
 		private System.Windows.Forms.Button btnOpen;
 		private System.Windows.Forms.Button btnFrontNode;
-		private System.Windows.Forms.Button button4;
+		private System.Windows.Forms.Button btnPowerElectronics;
 		private System.Windows.Forms.Button btnRearNode;
 	}
 }

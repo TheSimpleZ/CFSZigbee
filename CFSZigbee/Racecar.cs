@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using CFSZigbee.Annotations;
+using CFSZigbee.Properties;
 
 namespace CFSZigbee
 {

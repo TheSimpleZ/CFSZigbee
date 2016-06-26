@@ -11,6 +11,7 @@ namespace CFSZigbee
 		private readonly FrontNode _fn;
 		private readonly RearNode _rn;
 		private readonly Battery _battery;
+		private readonly PowerElectronics _pe;
 
 		public Form1()
 		{
@@ -18,6 +19,7 @@ namespace CFSZigbee
 			_fn = new FrontNode(xBee);
 			_rn = new RearNode(xBee);
 			_battery = new Battery(xBee);
+			_pe = new PowerElectronics(xBee);
 			ThreadStart childref = () => ReadSerial(xBee);
 			_childThread = new Thread(childref);
 		}
@@ -73,9 +75,11 @@ namespace CFSZigbee
 			_fn.Close();
 			_rn.Close();
 			_battery.Close();
+			_pe.Close();
 
 			_fn.Dispose();
 			_rn.Dispose();
+			_pe.Dispose();
 			_battery.Dispose();
 		}
 
@@ -147,7 +151,13 @@ namespace CFSZigbee
 						
 						// 5th byte: Steering Position
 						rc.SteeringPosition = sp.ReadByte();
+						break;
 
+					case 2: // Rear Node
+						rc.ShutdownCurrent = sp.ReadByte() != 0;
+						break;
+
+					case 3: // Power Electronics Left
 						// 6th byte: Right Wheel Speed
 						rc.RightWheelSpeed = (uint) (sp.ReadByte() | (sp.ReadByte() << 8));
 
@@ -158,12 +168,74 @@ namespace CFSZigbee
 						rc.LeftBrakeTemp = (uint)(sp.ReadByte() | (sp.ReadByte() << 8)) / 10;
 						rc.RightBrakeTemp = (uint)(sp.ReadByte() | (sp.ReadByte() << 8)) / 10;
 
+						// UINT8
+						// 4: LEstStatus
+						rc.LeftMotor.StatusBits = (byte)sp.ReadByte();
+
+						// 5: LMotorTemp
+						rc.LeftMotor.MotorTemp = (uint) sp.ReadByte();
+
+						// 6: LInvTemp
+						rc.LeftMotor.InverterTemp = (uint) sp.ReadByte();
+
+						// INT16
+						// 11: LReqTorque
+						rc.LeftMotor.ReqTorque = (sp.ReadByte() | (sp.ReadByte() << 8))/100;
+
+						// 12: LEstSpeed
+						rc.LeftMotor.EstSpeed = (sp.ReadByte() | (sp.ReadByte() << 8))/10;
+
+						// 13: LEstToruq
+						rc.LeftMotor.EstTorque = (sp.ReadByte() | (sp.ReadByte() << 8))/100;
+
+						// 14: LMotorCurrent
+						rc.LeftMotor.MotorCurrent = sp.ReadByte() | (sp.ReadByte() << 8);
+
+						// UINT16
+						// 18: LPower
+						rc.LeftMotor.EstPower = (uint)(sp.ReadByte() | (sp.ReadByte() << 8));
+
+						// 19: LVoltage
+						rc.LeftMotor.SupplyVoltage = (uint)(sp.ReadByte() | (sp.ReadByte() << 8))/10;
+
+						// 20: LErrors
+						rc.LeftMotor.Errors = (ushort)(sp.ReadByte() | (sp.ReadByte() << 8));
 
 						break;
 
-					case 2: // Rear Node
-						rc.ShutdownCurrent = sp.ReadByte() != 0;
-						rc.ThrottlePosition = sp.ReadByte() | (sp.ReadByte() << 8);
+					case 4: // Power Electronics Right
+						// UINT8
+						// 1: REstStatus
+						rc.RightMotor.StatusBits = (byte)sp.ReadByte();
+
+						// 2: RMotorTemp
+						rc.RightMotor.MotorTemp = (uint)sp.ReadByte();
+
+						// 3: RInvTemp
+						rc.RightMotor.InverterTemp = (uint)sp.ReadByte();
+
+						// INT16
+						// 7: RReqTorque
+						rc.RightMotor.ReqTorque = (sp.ReadByte() | (sp.ReadByte() << 8))/100;
+
+						// 8: REstSpeed
+						rc.RightMotor.EstSpeed = (sp.ReadByte() | (sp.ReadByte() << 8))/10;
+
+						// 9: REstTorque
+						rc.RightMotor.EstTorque = (sp.ReadByte() | (sp.ReadByte() << 8))/100;
+
+						// 10: RMotorCurrent
+						rc.RightMotor.MotorCurrent = sp.ReadByte() | (sp.ReadByte() << 8);
+
+						// UINT16
+						// 15: RPower
+						rc.RightMotor.EstPower = (uint)(sp.ReadByte() | (sp.ReadByte() << 8));
+
+						// 16: RVoltage
+						rc.RightMotor.SupplyVoltage = (uint)(sp.ReadByte() | (sp.ReadByte() << 8))/10;
+
+						// 17: RErrors
+						rc.RightMotor.Errors = (ushort)(sp.ReadByte() | (sp.ReadByte() << 8));
 						break;
 
 					case 5: // Battery
@@ -178,15 +250,21 @@ namespace CFSZigbee
 			}
 		}
 
-		public static bool IsFormOpen(Type FormType)
+		public static bool IsFormOpen(Type formType)
 		{
-			foreach (Form OpenForm in Application.OpenForms)
+			foreach (Form openForm in Application.OpenForms)
 			{
-				if (OpenForm.GetType() == FormType)
+				if (openForm.GetType() == formType)
 					return true;
 			}
 
 			return false;
+		}
+
+
+		private void btnPowerElectronics_Click(object sender, EventArgs e)
+		{
+			_pe.Show();
 		}
 
 

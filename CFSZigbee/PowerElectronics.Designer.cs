@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.groupBox9 = new System.Windows.Forms.GroupBox();
 			this.RMotorOverspeed = new System.Windows.Forms.Label();
 			this.RCommFault = new System.Windows.Forms.Label();
@@ -126,12 +127,14 @@
 			this.LReqTorque = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
+			this.racecarBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.groupBox9.SuspendLayout();
 			this.groupBox12.SuspendLayout();
 			this.groupBox13.SuspendLayout();
 			this.groupBox8.SuspendLayout();
 			this.groupBox11.SuspendLayout();
 			this.groupBox10.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.racecarBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox9
@@ -377,9 +380,9 @@
 			this.REstSC.AutoSize = true;
 			this.REstSC.Location = new System.Drawing.Point(119, 194);
 			this.REstSC.Name = "REstSC";
-			this.REstSC.Size = new System.Drawing.Size(16, 17);
+			this.REstSC.Size = new System.Drawing.Size(27, 17);
 			this.REstSC.TabIndex = 80;
-			this.REstSC.Text = "0";
+			this.REstSC.Text = "Off";
 			// 
 			// RCurrent
 			// 
@@ -395,9 +398,9 @@
 			this.REstPWM.AutoSize = true;
 			this.REstPWM.Location = new System.Drawing.Point(119, 175);
 			this.REstPWM.Name = "REstPWM";
-			this.REstPWM.Size = new System.Drawing.Size(16, 17);
+			this.REstPWM.Size = new System.Drawing.Size(27, 17);
 			this.REstPWM.TabIndex = 79;
-			this.REstPWM.Text = "0";
+			this.REstPWM.Text = "Off";
 			// 
 			// RInvTemp
 			// 
@@ -554,25 +557,25 @@
 			// RReqSC
 			// 
 			this.RReqSC.AutoSize = true;
-			this.RReqSC.Location = new System.Drawing.Point(230, 55);
+			this.RReqSC.Location = new System.Drawing.Point(218, 55);
 			this.RReqSC.Name = "RReqSC";
-			this.RReqSC.Size = new System.Drawing.Size(16, 17);
+			this.RReqSC.Size = new System.Drawing.Size(27, 17);
 			this.RReqSC.TabIndex = 68;
-			this.RReqSC.Text = "0";
+			this.RReqSC.Text = "Off";
 			// 
 			// RReqPWM
 			// 
 			this.RReqPWM.AutoSize = true;
-			this.RReqPWM.Location = new System.Drawing.Point(230, 23);
+			this.RReqPWM.Location = new System.Drawing.Point(218, 23);
 			this.RReqPWM.Name = "RReqPWM";
-			this.RReqPWM.Size = new System.Drawing.Size(16, 17);
+			this.RReqPWM.Size = new System.Drawing.Size(27, 17);
 			this.RReqPWM.TabIndex = 67;
-			this.RReqPWM.Text = "0";
+			this.RReqPWM.Text = "Off";
 			// 
 			// label74
 			// 
 			this.label74.AutoSize = true;
-			this.label74.Location = new System.Drawing.Point(133, 55);
+			this.label74.Location = new System.Drawing.Point(112, 55);
 			this.label74.Name = "label74";
 			this.label74.Size = new System.Drawing.Size(100, 17);
 			this.label74.TabIndex = 66;
@@ -581,7 +584,7 @@
 			// label75
 			// 
 			this.label75.AutoSize = true;
-			this.label75.Location = new System.Drawing.Point(133, 23);
+			this.label75.Location = new System.Drawing.Point(112, 23);
 			this.label75.Name = "label75";
 			this.label75.Size = new System.Drawing.Size(41, 17);
 			this.label75.TabIndex = 65;
@@ -866,9 +869,9 @@
 			this.LEstSC.AutoSize = true;
 			this.LEstSC.Location = new System.Drawing.Point(119, 194);
 			this.LEstSC.Name = "LEstSC";
-			this.LEstSC.Size = new System.Drawing.Size(16, 17);
+			this.LEstSC.Size = new System.Drawing.Size(27, 17);
 			this.LEstSC.TabIndex = 68;
-			this.LEstSC.Text = "0";
+			this.LEstSC.Text = "Off";
 			// 
 			// LCurrent
 			// 
@@ -884,9 +887,9 @@
 			this.LEstPWM.AutoSize = true;
 			this.LEstPWM.Location = new System.Drawing.Point(119, 175);
 			this.LEstPWM.Name = "LEstPWM";
-			this.LEstPWM.Size = new System.Drawing.Size(16, 17);
+			this.LEstPWM.Size = new System.Drawing.Size(27, 17);
 			this.LEstPWM.TabIndex = 67;
-			this.LEstPWM.Text = "0";
+			this.LEstPWM.Text = "Off";
 			// 
 			// LInvTemp
 			// 
@@ -1043,25 +1046,25 @@
 			// LReqSC
 			// 
 			this.LReqSC.AutoSize = true;
-			this.LReqSC.Location = new System.Drawing.Point(252, 54);
+			this.LReqSC.Location = new System.Drawing.Point(239, 54);
 			this.LReqSC.Name = "LReqSC";
-			this.LReqSC.Size = new System.Drawing.Size(16, 17);
+			this.LReqSC.Size = new System.Drawing.Size(27, 17);
 			this.LReqSC.TabIndex = 64;
-			this.LReqSC.Text = "0";
+			this.LReqSC.Text = "Off";
 			// 
 			// LReqPWM
 			// 
 			this.LReqPWM.AutoSize = true;
-			this.LReqPWM.Location = new System.Drawing.Point(252, 22);
+			this.LReqPWM.Location = new System.Drawing.Point(239, 22);
 			this.LReqPWM.Name = "LReqPWM";
-			this.LReqPWM.Size = new System.Drawing.Size(16, 17);
+			this.LReqPWM.Size = new System.Drawing.Size(27, 17);
 			this.LReqPWM.TabIndex = 63;
-			this.LReqPWM.Text = "0";
+			this.LReqPWM.Text = "Off";
 			// 
 			// label70
 			// 
 			this.label70.AutoSize = true;
-			this.label70.Location = new System.Drawing.Point(155, 54);
+			this.label70.Location = new System.Drawing.Point(133, 54);
 			this.label70.Name = "label70";
 			this.label70.Size = new System.Drawing.Size(100, 17);
 			this.label70.TabIndex = 62;
@@ -1070,7 +1073,7 @@
 			// label71
 			// 
 			this.label71.AutoSize = true;
-			this.label71.Location = new System.Drawing.Point(155, 22);
+			this.label71.Location = new System.Drawing.Point(133, 22);
 			this.label71.Name = "label71";
 			this.label71.Size = new System.Drawing.Size(41, 17);
 			this.label71.TabIndex = 61;
@@ -1112,6 +1115,10 @@
 			this.label4.TabIndex = 57;
 			this.label4.Text = "Torque:";
 			// 
+			// racecarBindingSource
+			// 
+			this.racecarBindingSource.DataSource = typeof(CFSZigbee.Racecar);
+			// 
 			// PowerElectronics
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1120,7 +1127,9 @@
 			this.Controls.Add(this.groupBox9);
 			this.Controls.Add(this.groupBox8);
 			this.Name = "PowerElectronics";
-			this.Text = "PowerElectronics";
+			this.Text = "Power Electronics";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PowerElectronics_FormClosing);
+			this.VisibleChanged += new System.EventHandler(this.PowerElectronics_VisibleChanged);
 			this.groupBox9.ResumeLayout(false);
 			this.groupBox9.PerformLayout();
 			this.groupBox12.ResumeLayout(false);
@@ -1133,6 +1142,7 @@
 			this.groupBox11.PerformLayout();
 			this.groupBox10.ResumeLayout(false);
 			this.groupBox10.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.racecarBindingSource)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -1237,5 +1247,6 @@
 		private System.Windows.Forms.Label LReqTorque;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.BindingSource racecarBindingSource;
 	}
 }
