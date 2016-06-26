@@ -184,7 +184,7 @@ namespace CFSZigbee
 						rc.LeftMotor.EstPower = (uint)(sp.ReadByte() | (sp.ReadByte() << 8));
 
 						// 19: LVoltage
-						rc.LeftMotor.SupplyVoltage = (uint)(sp.ReadByte() | (sp.ReadByte() << 8))/100;
+						rc.LeftMotor.SupplyVoltage = (uint)(sp.ReadByte() | (sp.ReadByte() << 8))/10;
 
 						// 20: LErrors
 						rc.LeftMotor.Errors = (ushort)(sp.ReadByte() | (sp.ReadByte() << 8));
@@ -220,7 +220,7 @@ namespace CFSZigbee
 						rc.RightMotor.EstPower = (uint)(sp.ReadByte() | (sp.ReadByte() << 8));
 
 						// 16: RVoltage
-						rc.RightMotor.SupplyVoltage = (uint)(sp.ReadByte() | (sp.ReadByte() << 8))/100;
+						rc.RightMotor.SupplyVoltage = (uint)(sp.ReadByte() | (sp.ReadByte() << 8))/10;
 
 						// 17: RErrors
 						rc.RightMotor.Errors = (ushort)(sp.ReadByte() | (sp.ReadByte() << 8));
